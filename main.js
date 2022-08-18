@@ -1,23 +1,4 @@
 //primer funcion
-function datosDeIngreso(nombre, edad, apellido) {
-  let esp = " ";
-  nombre = prompt("Esta es una pagina solo para mayores de edad INGRESA tus datos para continuar Nombre ");
-  apellido = prompt("igresa tu  apellido");
-  edad = parseInt(prompt("ingresa tu edad"));
-  while (edad <= 17) {
-    alert("no tienes la edad suficiente para navegar en este sitio");
-  }
-  if (edad >= 18) {
-    let resulta = "Hola" + esp + nombre + esp + apellido + esp + "tienes" + esp + edad + esp + "años" + esp + "bienvenido";
-    alert(resulta);
-  } else {
-    edad = 0;
-    while (edad == 0) {
-      alert("no llenaste los campos requeridos");
-    }
-  }
-}
-//segundaFuncion
 function calculadoraDePrecios(calcular, precio1, precio2) {
   calcular = prompt("deseas calcular algunos productos con el descuento aplicado si / no");
   while (calcular != "no") {
@@ -43,9 +24,36 @@ function calculadoraDePrecios(calcular, precio1, precio2) {
     }
   }
 }
-//Terminan Funciones
-datosDeIngreso();
-//array de ojetos
+//Terminan Funciones.
+//objeto
+class PersonaAingresar {
+  constructor(nombre, apellido, edad) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.edad = edad;
+  }
+  respuesta() {
+    while (edadIng <= 17) {
+      alert("no tienes la edad suficiente para navegar en este sitio");
+    }
+    if (edadIng >= 18) {
+      let resulta = "Hola" + " " + this.nombre + " " + this.apellido + " " + "tienes" + " " + this.edad + " " + "años" + " " + "bienvenido";
+      alert(resulta);
+    } else {
+      edadIng = 0;
+      while (edadIng == 0) {
+        alert("no llenaste los campos requeridos");
+      }
+    }
+  }
+}
+// term objeto class
+let nombreIng = prompt("Esta es una pagina solo para mayores de edad INGRESA tus datos para continuar Nombre ");
+let apellidoIng = prompt("Ingresa tu apellido");
+let edadIng = parseInt(prompt("Ingresa tu edad"));
+const personaIngresada = new PersonaAingresar(nombreIng, apellidoIng, edadIng);
+personaIngresada.respuesta();
+//array de objetos
 const inventarioVinateria = [
   { id: 111, nombreProducto: "Jack Daniels", tipoDeLicor: "whiskey", precio: 400 },
   { id: 141, nombreProducto: "Red Label", tipoDeLicor: "whiskey", precio: 370 },
