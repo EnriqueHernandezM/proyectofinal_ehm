@@ -1,0 +1,169 @@
+* {
+  /*reset*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} /*terminareset*/
+body {
+  font-family: Arial;
+  font-size: 1.25rem;
+  background: rgb(14, 14, 14);
+  color: white;
+}
+
+.barraDeNavegacion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media screen and (min-width: 992px) {
+  .barraDeNavegacion {
+    justify-content: space-between;
+  }
+}
+.barraDeNavegacion h1 {
+  padding: 1rem;
+  font-size: 2rem;
+}
+@media screen and (min-width: 576px) {
+  .barraDeNavegacion h1 {
+    padding-left: 3rem;
+    font-size: 3.5rem;
+  }
+}
+.barraDeNavegacion h1 a {
+  text-decoration: none;
+  color: white;
+}
+.barraDeNavegacion h1 a:hover {
+  color: rgb(223, 204, 141);
+}
+.barraDeNavegacion ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-right: 2rem;
+}
+.barraDeNavegacion ul li {
+  font-size: 1rem;
+  padding: 1.15rem;
+}
+@media screen and (min-width: 576px) {
+  .barraDeNavegacion ul li {
+    padding: 2.5rem;
+    font-size: 1.25rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .barraDeNavegacion ul li {
+    font-size: 1.75rem;
+  }
+}
+.barraDeNavegacion ul li a {
+  text-decoration: none;
+  color: white;
+}
+.barraDeNavegacion ul li a:hover {
+  color: rgb(223, 204, 141);
+}
+
+.cuerpoPrincipalDePagina {
+  padding-top: 6rem;
+  padding: 0.25rem;
+}
+.cuerpoPrincipalDePagina article {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.25rem;
+}
+@media screen and (min-width: 576px) {
+  .cuerpoPrincipalDePagina article {
+    justify-content: start;
+  }
+}
+@media screen and (min-width: 992px) {
+  .cuerpoPrincipalDePagina article {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+  }
+}
+.cuerpoPrincipalDePagina article a img {
+  width: 97vw;
+}
+@media screen and (min-width: 576px) {
+  .cuerpoPrincipalDePagina article a img {
+    width: 99vw;
+  }
+}
+@media screen and (min-width: 992px) {
+  .cuerpoPrincipalDePagina article a img {
+    width: 50vw;
+  }
+}
+.cuerpoPrincipalDePagina article h3 {
+  font-size: 1.5rem;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  align-self: flex-start;
+}
+@media screen and (min-width: 992px) {
+  .cuerpoPrincipalDePagina article h3 {
+    width: 45vw;
+    align-self: center;
+    padding-left: 10rem;
+  }
+}
+.cuerpoPrincipalDePagina .anuncioPrepararMojito {
+  background-image: url(https://www.comedera.com/wp-content/uploads/2022/04/mojito.jpg);
+  background-size: 100% 100%;
+}
+.cuerpoPrincipalDePagina .anuncioPrepararMojito h3 {
+  font-size: 1rem;
+  padding: 0.75rem 1rem 7rem 0.5rem;
+}
+@media screen and (min-width: 576px) {
+  .cuerpoPrincipalDePagina .anuncioPrepararMojito h3 {
+    font-size: 1.5rem;
+    padding: 2rem 2rem 10rem 2rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .cuerpoPrincipalDePagina .anuncioPrepararMojito h3 {
+    font-size: 2.5rem;
+    padding: 4.25rem 2rem 20rem 3rem;
+  }
+}
+.cuerpoPrincipalDePagina .anuncioPrepararMojito h3 a {
+  text-decoration: none;
+  color: white;
+}
+.cuerpoPrincipalDePagina .anuncioPrepararMojito h3 a:hover {
+  color: rgb(194, 232, 113);
+}
+
+.pieDePaginas {
+  background: wheat;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+}
+.pieDePaginas h5 {
+  padding: 0.75rem;
+  text-align: center;
+}
+.pieDePaginas ul {
+  padding: 0.75rem;
+}
+.pieDePaginas li {
+  padding: 0.5rem;
+  list-style: none;
+}
+.pieDePaginas li a img {
+  width: 3rem;
+}/*# sourceMappingURL=estilos.css.map */

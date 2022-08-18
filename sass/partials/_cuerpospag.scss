@@ -1,0 +1,66 @@
+.cuerpoPrincipalDePagina {
+  padding-top: 6rem;
+  padding: 0.25rem;
+  article {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.25rem;
+    @include adaptablePaginaTablet {
+      justify-content: start;
+    }
+    @include adaptablePagina {
+      flex-direction: row-reverse;
+      justify-content: space-around;
+    }
+    a {
+      img {
+        width: 97vw;
+        @include adaptablePaginaTablet {
+          width: 99vw;
+        }
+        @include adaptablePagina {
+          width: 50vw;
+        }
+      }
+    }
+    h3 {
+      font-size: 1.5rem;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      align-self: flex-start;
+      @include adaptablePagina {
+        width: 45vw;
+        align-self: center;
+        padding-left: 10rem;
+      }
+    }
+  }
+  //*preparacio mojito se conectara a otr paginas*//
+  .anuncioPrepararMojito {
+    h3 {
+      font-size: 1rem;
+      padding: 0.75rem 1rem 7rem 0.5rem;
+      @include adaptablePaginaTablet {
+        font-size: 1.5rem;
+        padding: 2rem 2rem 10rem 2rem;
+      }
+      @include adaptablePagina {
+        font-size: 2.5rem;
+        padding: 4.25rem 2rem 20rem 3rem;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        color: rgb(194, 232, 113);
+      }
+    }
+
+    background-image: url(https://www.comedera.com/wp-content/uploads/2022/04/mojito.jpg);
+    background-size: 100% 100%;
+  }
+}
