@@ -25,6 +25,7 @@ function calculadoraDePrecios(calcular, precio1, precio2) {
   }
 }
 //Terminan Funciones.
+let esp = " ";
 //objeto
 class PersonaAingresar {
   constructor(nombre, apellido, edad) {
@@ -32,40 +33,55 @@ class PersonaAingresar {
     this.apellido = apellido;
     this.edad = edad;
   }
+
   respuesta() {
-    while (edadIng <= 17) {
+    while (this.edad <= 17) {
       alert("no tienes la edad suficiente para navegar en este sitio");
     }
-    if (edadIng >= 18) {
-      let resulta = "Hola" + " " + this.nombre + " " + this.apellido + " " + "tienes" + " " + this.edad + " " + "años" + " " + "bienvenido";
+    if (this.edad >= 18) {
+      let resulta = "Hola" + esp + this.nombre + esp + this.apellido + esp + "tienes" + esp + this.edad + esp + "años" + esp + "bienvenido";
       alert(resulta);
     } else {
-      edadIng = 0;
-      while (edadIng == 0) {
+      this.edad = 0;
+      while (this.edad == 0) {
         alert("no llenaste los campos requeridos");
       }
     }
   }
 }
+
 // term objeto class
-let nombreIng = prompt("Esta es una pagina solo para mayores de edad INGRESA tus datos para continuar Nombre ");
-let apellidoIng = prompt("Ingresa tu apellido");
-let edadIng = parseInt(prompt("Ingresa tu edad"));
-const personaIngresada = new PersonaAingresar(nombreIng, apellidoIng, edadIng);
+let ingresados = "";
+const personaIngresada = new PersonaAingresar(
+  prompt("Esta es una pagina solo para mayores de edad INGRESA tus datos para continuar Nombre "),
+  prompt("Ingresa tu apellido"),
+  parseInt(prompt("Ingresa tu edad"))
+);
+
 personaIngresada.respuesta();
 //array de objetos
-const inventarioVinateria = [
-  { id: 111, nombreProducto: "Jack Daniels", tipoDeLicor: "whiskey", precio: 400 },
-  { id: 141, nombreProducto: "Red Label", tipoDeLicor: "whiskey", precio: 370 },
-  { id: 131, nombreProducto: "wiliam Lawson", tipoDeLicor: "whiskey", precio: 350 },
-  { id: 111, nombreProducto: "Don Julio", tipoDeLicor: "tequila", precio: 300 },
-  { id: 107, nombreProducto: "Jose Cuervo", tipoDeLicor: "tequila", precio: 250 },
-  { id: 124, nombreProducto: "Jimador", tipoDeLicor: "tequila", precio: 200 },
-  { id: 180, nombreProducto: "Capitan Morgan", tipoDeLicor: "ron", precio: 240 },
-  { id: 100, nombreProducto: "Bacardi", tipoDeLicor: "ron", precio: 260 },
-  { id: 166, nombreProducto: "Kraken", tipoDeLicor: "ron", precio: 340 },
-  { id: 125, nombreProducto: "Red Label Black", tipoDeLicor: "whiskey", precio: 600 },
-];
+class ItemsDisponibles {
+  constructor(id, nombreProducto, tipoDeLicor, precio) {
+    this.id = id;
+    this.nombreProducto = nombreProducto;
+    this.tipoDeLicor = tipoDeLicor;
+    this.precio = precio;
+  }
+}
+const inventarioVinateria = [];
+
+const item1 = new ItemsDisponibles(111, "Jack Daniels", "whiskey", 400);
+const item2 = new ItemsDisponibles(444, "Red Label", "whiskey", 370);
+const item3 = new ItemsDisponibles(131, "Wiliam Lawson", "whiskey", 350);
+const item4 = new ItemsDisponibles(111, "Don julio", "tequila", 300);
+const item5 = new ItemsDisponibles(107, "Jose Cuervo", "tequila", 250);
+const item6 = new ItemsDisponibles(124, "Jimador", "tequila", 200);
+const item7 = new ItemsDisponibles(180, "Capitan Morgan", "ron", 240);
+const item8 = new ItemsDisponibles(100, "Bacardi", "ron", 260);
+const item9 = new ItemsDisponibles(166, "Kraken", "ron", 340);
+const item10 = new ItemsDisponibles(125, "Red Label Blac", "whiskey", 600);
+
+inventarioVinateria.push(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10);
 console.log(inventarioVinateria);
 
 let preguntaEntrarAbuscador = prompt("deseas buscar alguno de nuestros productos? \n 1)Buscar Por Tipo de licor \n 2)Buscar por nombre de licor");
@@ -78,7 +94,7 @@ switch (preguntaEntrarAbuscador) {
     if (VamosAfiltrarTipos.length == []) {
       alert("No encontramos resultados para tu busqueda");
     } else {
-      const filtradoTipo = VamosAfiltrarTipos.map((el) => el.nombreProducto + "precio: " + el.precio);
+      const filtradoTipo = VamosAfiltrarTipos.map((el) => el.nombreProducto + esp + "precio: " + el.precio);
 
       alert("Estos son los productos que encontramos" + "\n" + filtradoTipo.join("\n"));
     }
@@ -91,7 +107,7 @@ switch (preguntaEntrarAbuscador) {
     if (vamosAfiltrarNombres.length == []) {
       alert("No encontramos resultados para tu busqueda");
     } else {
-      const filtradoNombre = vamosAfiltrarNombres.map((art) => art.nombreProducto + "precio: " + art.precio);
+      const filtradoNombre = vamosAfiltrarNombres.map((art) => art.nombreProducto + esp + "precio: " + art.precio);
       alert("Estos son los productos que encontramos" + "\n" + filtradoNombre.join("\n"));
     }
     break;
