@@ -49,9 +49,7 @@ class PersonaAingresar {
     }
   }
 }
-
-// term objeto class
-let ingresados = "";
+//term objeto class
 const personaIngresada = new PersonaAingresar(
   prompt("Esta es una pagina solo para mayores de edad INGRESA tus datos para continuar Nombre "),
   prompt("Ingresa tu apellido"),
