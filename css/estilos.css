@@ -145,6 +145,265 @@ body {
   color: rgb(194, 232, 113);
 }
 
+/*pagina tienda*/
+#itemsAmostrar {
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  width: 99vw;
+  margin: auto;
+}
+@media screen and (min-width: 992px) {
+  #itemsAmostrar {
+    width: 80vw;
+    margin: auto;
+  }
+}
+#itemsAmostrar p {
+  padding: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: center;
+  line-height: 1px;
+}
+@media screen and (min-width: 992px) {
+  #itemsAmostrar p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+#itemsAmostrar p img {
+  padding: 0.5rem;
+  width: 10rem;
+  height: 10rem;
+}
+@media screen and (min-width: 992px) {
+  #itemsAmostrar p img {
+    width: 14rem;
+    height: 14rem;
+  }
+}
+#itemsAmostrar p span {
+  cursor: pointer;
+}
+
+#itemsEnElCarrito {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 97vw;
+  margin: auto;
+}
+@media screen and (min-width: 992px) {
+  #itemsEnElCarrito {
+    width: 80vw;
+    margin: auto;
+  }
+}
+#itemsEnElCarrito container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+  flex-wrap: wrap;
+}
+@media screen and (min-width: 992px) {
+  #itemsEnElCarrito container {
+    padding: 0rem 2.5rem 0rem 2.5rem;
+    justify-content: space-between;
+  }
+}
+@media screen and (min-width: 992px) {
+  #itemsEnElCarrito container p {
+    width: 17vw;
+  }
+}
+#itemsEnElCarrito container p img {
+  width: 5rem;
+  height: 6rem;
+}
+@media screen and (min-width: 992px) {
+  #itemsEnElCarrito container p img {
+    width: 13rem;
+    height: 13rem;
+    padding: 1rem;
+  }
+}
+#itemsEnElCarrito container span {
+  cursor: pointer;
+}
+
+#acceso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 2.5vw;
+  top: 1rem;
+  width: 95vw;
+  opacity: 100;
+  -webkit-animation-name: desaparece;
+          animation-name: desaparece;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  color: rgb(255, 219, 136);
+  font-family: "Trebuchet MS";
+  font-weight: 400;
+}
+@media screen and (min-width: 992px) {
+  #acceso h1 {
+    font-size: 5.5rem;
+    padding: 5rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  #acceso {
+    background-color: rgb(38, 51, 51);
+    padding: 3rem;
+    height: 182vh;
+  }
+}
+#acceso label {
+  padding-top: 15rem;
+  font-size: 1rem;
+}
+@media screen and (min-width: 992px) {
+  #acceso label {
+    font-size: 2rem;
+    padding: 10rem 0rem 7.5rem 0rem;
+  }
+}
+#acceso input {
+  height: 2rem;
+  border-radius: 5%;
+  width: 7rem;
+}
+@media screen and (min-width: 992px) {
+  #acceso input {
+    height: 2rem;
+    border-radius: 5%;
+    width: 3rem;
+  }
+}
+#acceso button {
+  border-radius: 5%;
+  height: 2rem;
+  width: 3rem;
+}
+
+#anuncioEntrada {
+  border-radius: 2%;
+  padding: 1rem;
+  position: absolute;
+  display: flex;
+  left: 10vw;
+  width: 80vw;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrrKQ77TBs8h_5HifeFI8mHku96PdvYi3aJ4u3qf3XPP4WP_KRtJMPeKUQCTz3QwcIi5c&usqp=CAU);
+  background-size: contain;
+  opacity: 0;
+  -webkit-animation-name: desaparecer;
+          animation-name: desaparecer;
+  -webkit-animation-duration: 7s;
+          animation-duration: 7s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  font-size: 1.25rem;
+  color: rgb(255, 219, 136);
+  font-family: "Trebuchet MS";
+  font-weight: 400;
+  margin: auto;
+}
+
+@-webkit-keyframes desaparecer {
+  50% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes desaparecer {
+  50% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+main h4 {
+  font-size: 1.75rem;
+  padding: 3rem;
+  text-align: center;
+}
+main h3 {
+  padding-top: 5rem;
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 3.5rem;
+}
+
+/*tienda*/
+#barraTienda {
+  background: linear-gradient(180deg, rgb(48, 48, 48) 7%, rgb(132, 132, 132) 21%, rgb(255, 255, 255) 50%, rgb(92, 92, 92) 74%, rgb(0, 0, 0) 86%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center;
+}
+#barraTienda li {
+  list-style: none;
+  padding-right: 2rem;
+}
+@media screen and (min-width: 992px) {
+  #barraTienda li {
+    padding: 1rem 3rem 1rem 3rem;
+  }
+}
+#barraTienda li span {
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+#barraTienda li span img {
+  width: 4rem;
+  padding: 1rem;
+}
+
+@media screen and (min-width: 992px) {
+  #acumuladorTotal {
+    padding: 1rem 10rem 1rem 17rem;
+  }
+}
+#acumuladorTotal div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#acumuladorTotal div h2 {
+  font-size: 2;
+}
+#acumuladorTotal div h3 {
+  font-size: 2rem;
+}
+@media screen and (min-width: 992px) {
+  #acumuladorTotal div h3 {
+    padding-left: 36.5rem;
+  }
+}
+#acumuladorTotal div button {
+  width: 4rem;
+  height: 3rem;
+}
+
 .pieDePaginas {
   background: wheat;
   color: rgb(0, 0, 0);

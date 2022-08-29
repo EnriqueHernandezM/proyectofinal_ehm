@@ -14,11 +14,18 @@
         <ul>
           <li><a href="###">PRODUCTOS</a></li>
           <li><a href="###">BEBIDAS</a></li>
-          <li><a href="###">TIENDA</a></li>
+          <li><a href="./paginas/tienda.html">TIENDA</a></li>
         </ul>
       </nav>
     </header>
     <main class="cuerpoPrincipalDePagina">
+      <div id="acceso">
+        <h1>Jack Vinaterias</h1>
+        <label for="entradaEdad">Este es un sitio solo para mayores de edad : </label>
+        <input type="number" id="entradaEdad" placeholder="edad" />
+        <button type="button" onclick="respuesta()">Enviar</button>
+      </div>
+      <div id="respAnuncio"></div>
       <article>
         <a href=""><img src="https://i.ytimg.com/vi/WGrX46hqSCc/maxresdefault.jpg" alt="whiskey Jack Daniels" /></a>
         <h3>
@@ -33,13 +40,6 @@
         </h3>
         <a href=""><img src="https://media.gq.com.mx/photos/61297780cd91d62b84879d07/master/w_3000,h_2002,c_limit/tequila-don-julio-a%C3%B1ejo.jpg" alt="Tequila Don Julio" /></a>
       </article>
-      <article>
-        <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ_rIRNw8IHr6w6YGWk5wFeNZTNDnIKZBDnw1AgyryEoo05OlKYIvHNvfCpA-esYzjSNE&usqp=CAU" alt="Moen Chandon Champane" /></a>
-        <h3>
-          moet Chandon <br />
-          Para esos momentos inolvidables
-        </h3>
-      </article>
       <div class="anuncioPrepararMojito">
         <h3>
           <a href="#3#">
@@ -48,23 +48,22 @@
           >
         </h3>
       </div>
-      <footer class="pieDePaginas">
-        <h5>
-          Desarrollado por <br />
-          Enrique Hernandez Montiel
-        </h5>
-        <ul>
-          <li>
-            <a href=""><img src="./imagenes/logogithub.png" alt="" /></a>
-          </li>
-          <li>
-            <a href=""><img src="./imagenes/logolinkeld.png" alt="" /></a>
-          </li>
-        </ul>
-        <h5>Terminos Y Condiciones</h5>
-      </footer>
     </main>
-
+    <footer class="pieDePaginas">
+      <h5>
+        Desarrollado por <br />
+        Enrique Hernandez Montiel
+      </h5>
+      <ul>
+        <li>
+          <a href=""><img src="./imagenes/logogithub.png" alt="" /></a>
+        </li>
+        <li>
+          <a href=""><img src="./imagenes/logolinkeld.png" alt="" /></a>
+        </li>
+      </ul>
+      <h5>Terminos Y Condiciones</h5>
+    </footer>
     <script src="main.js"></script>
   </body>
 </html>
