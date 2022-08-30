@@ -1,9 +1,12 @@
 let regreso = localStorage.getItem("inputValueEntradaEdad");
 let regresoOn = parseInt(regreso);
+let regresoGcarrito = localStorage.getItem("carritoGuardado");
+regresoGcarrito = JSON.parse(regresoGcarrito);
 //array disponibles
 let inventarioVinateria = [];
 let carritoDeCompras = [];
 //array de objetos
+
 class ItemsDisponibles {
   constructor(imagen, id, nombreProducto, tipoDeLicor, precio) {
     this.imagen = imagen;
@@ -36,10 +39,11 @@ function addToCart(id) {
   carritoDeCompras.push(productoIntroduzido);
   mostrarItemsEnCarrito();
 }
+
 //funcion 2
 function quitarDelCarrito(id) {
-  carritoDeCompras.splice(id, 1);
-  mostrarItemsEnCarrito();
+  regresoGcarrito.splice(id, 1);
+  regresoCarritoGuardado();
 }
 //funcion 3
 //Funcion para mostrar items disponibles en pantalla
@@ -63,6 +67,28 @@ function mostrarItemsEnTienda() {
   document.getElementById("itemsAmostrar").innerHTML = html;
 }
 
+const regresoCarritoGuardado = () => {
+  if (regresoGcarrito) {
+    let html = "";
+    for (let i = 0; i < regresoGcarrito.length; i++) {
+      html =
+        html +
+        `
+          <div>
+          <container>
+          <p> <img src="${regresoGcarrito[i].imagen}" /></p>
+          <p> ${regresoGcarrito[i].nombreProducto}</p>
+          <p> ${regresoGcarrito[i].tipoDeLicor}</p>
+          <p> $${regresoGcarrito[i].precio}</p>
+          <span onclick=quitarDelCarrito(${[i]});>🗑️</span>
+          </container>
+          </div>
+          `;
+    }
+    document.getElementById("itemsEnElCarrito").innerHTML = html;
+    console.log(regresoGcarrito);
+  }
+};
 // funcion 4 mostrar items agregados en la pagina
 function mostrarItemsEnCarrito() {
   const prueba = carritoDeCompras.reduce((acc, el) => acc + el.precio, 0);
@@ -99,6 +125,8 @@ function mostrarItemsEnCarrito() {
     document.getElementById("itemsEnElCarrito").innerHTML = html;
     document.getElementById("acumuladorTotal").innerHTML = acumulador;
   }
+  let carritoGuardado = JSON.stringify(carritoDeCompras);
+  localStorage.setItem("carritoGuardado", carritoGuardado);
 }
 
 //funcion buscador
@@ -155,7 +183,7 @@ function respuesta() {
   }
 }
 
-// intentaremos guardar el ingreso de edad en almacenamiento Local
+// intentaremos guardar el carrito para mostrar en otra pagina de edad en almacenamiento Local
 
 //Terminan Funciones.
 
