@@ -1,5 +1,7 @@
+// aqui regreseo la edad para no solicitar de nuevo
 let regreso = localStorage.getItem("inputValueEntradaEdad");
 let regresoOn = parseInt(regreso);
+//aqui guardo el carritoDeCompras
 let regresoGcarrito = localStorage.getItem("carritoGuardado");
 regresoGcarrito = JSON.parse(regresoGcarrito);
 //array disponibles
@@ -39,7 +41,6 @@ function addToCart(id) {
   carritoDeCompras.push(productoIntroduzido);
   mostrarItemsEnCarrito();
 }
-
 //funcion 2
 function quitarDelCarrito(id) {
   regresoGcarrito.splice(id, 1);
@@ -68,6 +69,7 @@ function mostrarItemsEnTienda() {
 }
 
 const regresoCarritoGuardado = () => {
+  const prueba = regresoGcarrito.reduce((acc, el) => acc + el.precio, 0);
   if (regresoGcarrito) {
     let html = "";
     for (let i = 0; i < regresoGcarrito.length; i++) {
@@ -85,32 +87,6 @@ const regresoCarritoGuardado = () => {
           </div>
           `;
     }
-    document.getElementById("itemsEnElCarrito").innerHTML = html;
-    console.log(regresoGcarrito);
-  }
-};
-// funcion 4 mostrar items agregados en la pagina
-function mostrarItemsEnCarrito() {
-  const prueba = carritoDeCompras.reduce((acc, el) => acc + el.precio, 0);
-  if (carritoDeCompras.length == 0) {
-    document.getElementById("itemsEnElCarrito").innerHTML = "<h3>INGRESA PRODUCTOS A TU CARRITO</h3>";
-  } else {
-    let html = "";
-    for (let i = 0; i < carritoDeCompras.length; i++) {
-      html =
-        html +
-        `
-      <div>
-      <container>
-      <p> <img src="${carritoDeCompras[i].imagen}" /></p>
-      <p> ${carritoDeCompras[i].nombreProducto}</p>
-      <p> ${carritoDeCompras[i].tipoDeLicor}</p>
-      <p> $${carritoDeCompras[i].precio}</p>
-      <span onclick=quitarDelCarrito(${[i]});>🗑️</span>
-      </container>
-      </div>
-      `;
-    }
     let acumulador = "";
     acumulador =
       acumulador +
@@ -124,7 +100,14 @@ function mostrarItemsEnCarrito() {
 
     document.getElementById("itemsEnElCarrito").innerHTML = html;
     document.getElementById("acumuladorTotal").innerHTML = acumulador;
+
+    console.log(regresoGcarrito);
   }
+};
+// funcion 4 mostrar items agregados en la pagina
+//cambiar nombre a funcion RECORDAR
+//cambiar nombre a funcion RECORDAR
+function mostrarItemsEnCarrito() {
   let carritoGuardado = JSON.stringify(carritoDeCompras);
   localStorage.setItem("carritoGuardado", carritoGuardado);
 }
@@ -140,6 +123,7 @@ function buscadorItems(entradaAbuscar) {
   inventarioVinateria = inventarioVinateria.filter((el) => el.tipoDeLicor.includes(entradaAbuscar));
   mostrarItemsEnTienda();
 }
+
 //funcion 5 acceso pagina para el index
 
 const mostrarRegreso = () => {
