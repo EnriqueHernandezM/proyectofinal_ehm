@@ -1,14 +1,9 @@
-// aqui regreseo la edad para no solicitar de nuevo
 let regreso = localStorage.getItem("inputValueEntradaEdad");
 let regresoOn = parseInt(regreso);
-//aqui guardo el carritoDeCompras
-let regresoGcarrito = localStorage.getItem("carritoGuardado");
-regresoGcarrito = JSON.parse(regresoGcarrito);
 //array disponibles
 let inventarioVinateria = [];
 let carritoDeCompras = [];
 //array de objetos
-
 class ItemsDisponibles {
   constructor(imagen, id, nombreProducto, tipoDeLicor, precio) {
     this.imagen = imagen;
@@ -18,7 +13,6 @@ class ItemsDisponibles {
     this.precio = precio;
   }
 }
-
 const item1 = new ItemsDisponibles("../imagenes/i111jack.jpg", 111, "Jack Daniels", "whiskey", 400);
 const item2 = new ItemsDisponibles("../imagenes/i444redL.jpg", 444, "Red Label", "whiskey", 370);
 const item3 = new ItemsDisponibles("../imagenes/i131wiliam.jpg", 131, "Wiliam Lawson", "whiskey", 350);
@@ -31,7 +25,6 @@ const item9 = new ItemsDisponibles("../imagenes/i166kraken.jpg", 166, "Kraken", 
 const item10 = new ItemsDisponibles("../imagenes/i125black.jpg", 125, "Red Label Black", "whiskey", 600);
 const item11 = new ItemsDisponibles("../imagenes/213absolut.jfif", 213, "Absolut Vodka", "vodka", 400);
 const item12 = new ItemsDisponibles("../imagenes/222smirnof.jpg", 222, "Smirnof", "vodka", 300);
-
 inventarioVinateria.push(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12);
 const inventarioVinateriaCopia = [...inventarioVinateria];
 // funcion
@@ -43,8 +36,8 @@ function addToCart(id) {
 }
 //funcion 2
 function quitarDelCarrito(id) {
-  regresoGcarrito.splice(id, 1);
-  regresoCarritoGuardado();
+  carritoDeCompras.splice(id, 1);
+  mostrarItemsEnCarrito();
 }
 //funcion 3
 //Funcion para mostrar items disponibles en pantalla
@@ -67,25 +60,27 @@ function mostrarItemsEnTienda() {
   }
   document.getElementById("itemsAmostrar").innerHTML = html;
 }
-
-const regresoCarritoGuardado = () => {
-  const prueba = regresoGcarrito.reduce((acc, el) => acc + el.precio, 0);
-  if (regresoGcarrito) {
+// funcion 4 mostrar items agregados en la pagina
+function mostrarItemsEnCarrito() {
+  const prueba = carritoDeCompras.reduce((acc, el) => acc + el.precio, 0);
+  if (carritoDeCompras.length == 0) {
+    document.getElementById("itemsEnElCarrito").innerHTML = "<h3>INGRESA PRODUCTOS A TU CARRITO</h3>";
+  } else {
     let html = "";
-    for (let i = 0; i < regresoGcarrito.length; i++) {
+    for (let i = 0; i < carritoDeCompras.length; i++) {
       html =
         html +
         `
-          <div>
-          <container>
-          <p> <img src="${regresoGcarrito[i].imagen}" /></p>
-          <p> ${regresoGcarrito[i].nombreProducto}</p>
-          <p> ${regresoGcarrito[i].tipoDeLicor}</p>
-          <p> $${regresoGcarrito[i].precio}</p>
-          <span onclick=quitarDelCarrito(${[i]});>🗑️</span>
-          </container>
-          </div>
-          `;
+      <div>
+      <container>
+      <p> <img src="${carritoDeCompras[i].imagen}" /></p>
+      <p> ${carritoDeCompras[i].nombreProducto}</p>
+      <p> ${carritoDeCompras[i].tipoDeLicor}</p>
+      <p> $${carritoDeCompras[i].precio}</p>
+      <span onclick=quitarDelCarrito(${[i]});>🗑️</span>
+      </container>
+      </div>
+      `;
     }
     let acumulador = "";
     acumulador =
@@ -100,18 +95,8 @@ const regresoCarritoGuardado = () => {
 
     document.getElementById("itemsEnElCarrito").innerHTML = html;
     document.getElementById("acumuladorTotal").innerHTML = acumulador;
-
-    console.log(regresoGcarrito);
   }
-};
-// funcion 4 mostrar items agregados en la pagina
-//cambiar nombre a funcion RECORDAR
-//cambiar nombre a funcion RECORDAR
-function mostrarItemsEnCarrito() {
-  let carritoGuardado = JSON.stringify(carritoDeCompras);
-  localStorage.setItem("carritoGuardado", carritoGuardado);
 }
-
 //funcion buscador
 function buscadorItems(entradaAbuscar) {
   inventarioVinateria = [...inventarioVinateriaCopia];
@@ -123,9 +108,7 @@ function buscadorItems(entradaAbuscar) {
   inventarioVinateria = inventarioVinateria.filter((el) => el.tipoDeLicor.includes(entradaAbuscar));
   mostrarItemsEnTienda();
 }
-
 //funcion 5 acceso pagina para el index
-
 const mostrarRegreso = () => {
   if (regresoOn >= 18) {
     document.getElementById("acceso").remove();
@@ -166,9 +149,13 @@ function respuesta() {
     alert("no llenaste los campos requeridos");
   }
 }
-
 // intentaremos guardar el carrito para mostrar en otra pagina de edad en almacenamiento Local
-
+let carritoGuardado = JSON.stringify(carritoDeCompras);
+localStorage.setItem("carritoGuardado", carritoGuardado);
+const regresoCarritoGuardado = () => {
+  let regresoGCarrito = localStorage.getItem("carritoGuardado");
+  regresoGCarrito = JSON.parse(regresoGCarrito);
+  console.log(regresoGcarrito);
+};
 //Terminan Funciones.
-
 mostrarItemsEnTienda();
