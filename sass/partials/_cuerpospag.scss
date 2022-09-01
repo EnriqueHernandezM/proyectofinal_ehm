@@ -144,6 +144,7 @@
 }
 #acceso {
   h1 {
+    font-size: 1.5rem;
     @include adaptablePagina {
       font-size: 5.5rem;
       padding: 5rem;
@@ -156,7 +157,6 @@
   left: 2.5vw;
   top: 1rem;
   width: 95vw;
-
   opacity: 100;
   animation-name: desaparece;
   animation-duration: 10s;
@@ -164,6 +164,8 @@
   color: rgb(255, 219, 136);
   font-family: "Trebuchet MS";
   font-weight: 400;
+  background-color: rgb(38, 51, 51);
+  height: 130vh;
   @include adaptablePagina {
     background-color: rgb(38, 51, 51);
     padding: 3rem;
@@ -230,8 +232,12 @@ main {
   h3 {
     padding-top: 5rem;
     text-align: center;
-    font-size: 2.5rem;
-    padding: 3.5rem;
+    font-size: 1.5rem;
+    padding: 1rem;
+    @include adaptablePagina {
+      font-size: 2.5rem;
+      padding: 3.5rem;
+    }
   }
 }
 /*tienda*/
@@ -245,8 +251,9 @@ main {
     list-style: none;
     @include adaptablePagina {
       padding: 1rem 3rem 1rem 3rem;
+      padding-right: 2rem;
     }
-    padding-right: 2rem;
+    padding-right: 1rem;
     span {
       text-decoration: none;
       color: black;

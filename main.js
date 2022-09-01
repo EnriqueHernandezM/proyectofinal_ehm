@@ -1,11 +1,13 @@
+// variables con las que regreso los valores para guardar edad del index
 let regreso = localStorage.getItem("inputValueEntradaEdad");
 let regresoOn = parseInt(regreso);
+//variables con las que regreso el carrito de compras
 let regresoGcarrito = localStorage.getItem("carritoGuardado");
 regresoGcarrito = JSON.parse(regresoGcarrito);
 //array disponibles
 let inventarioVinateria = [];
 let carritoDeCompras = [];
-//array de objetos
+//array de objetos constructror array itrms disp
 class ItemsDisponibles {
   constructor(imagen, id, nombreProducto, tipoDeLicor, precio) {
     this.imagen = imagen;
@@ -31,16 +33,9 @@ const item12 = new ItemsDisponibles("../imagenes/222smirnof.jpg", 222, "Smirnof"
 
 inventarioVinateria.push(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12);
 const inventarioVinateriaCopia = [...inventarioVinateria];
-// funcion
+// var espacio
 let esp = " ";
-
-//funcion 2
-function quitarDelCarrito(id) {
-  carritoDeCompras.splice(id, 1);
-  mostrarItemsEnCarrito();
-}
-//funcion 3
-//Funcion para mostrar items disponibles en pantalla
+//funcion 1 para mostrar items disponibles en pantalla
 function mostrarItemsEnTienda() {
   let html = "";
   for (let i = 0; i < inventarioVinateria.length; i++) {
@@ -60,28 +55,42 @@ function mostrarItemsEnTienda() {
   }
   document.getElementById("itemsAmostrar").innerHTML = html;
 }
-
+//funcion 2 para aniadir productos al carrito
 function addToCart(id) {
   const productoIntroduzido = inventarioVinateria.find((item) => item.id == id);
   if (regresoGcarrito) {
-    carritoDeCompras = regresoGcarrito.concat(carritoDeCompras);
+    carritoDeCompras = regresoGcarrito;
   }
   carritoDeCompras.push(productoIntroduzido);
-
-  let carritoGuardado = JSON.stringify(carritoDeCompras);
+  let carritoGuardado = JSON.stringify(carritoDeCompras); //guarde elementos push el localstore
   localStorage.setItem("carritoGuardado", carritoGuardado);
 }
+//funcion 3 para quitar items en carrito
+function quitarDelCarrito(id) {
+  if (regresoGcarrito) {
+    carritoDeCompras = regresoGcarrito;
+    carritoDeCompras.splice(id, 1);
+    carritoGuardado = JSON.stringify(carritoDeCompras); //guarde elementos borrados del carrito el localstore
+    localStorage.setItem("carritoGuardado", carritoGuardado);
+    mostrarEnPagCarrito();
+  } else {
+    carritoDeCompras.splice(id, 1);
+    mostrarItemsEnCarrito();
+  }
+}
+// funcion 4 para mostrar mi carrito en otra pagina cuando la pag carge
 function mostrarEnPagCarrito() {
   if (regresoGcarrito) {
     carritoDeCompras = regresoGcarrito;
     mostrarItemsEnCarrito();
   }
 }
-// funcion 4 mostrar items agregados en la pagina
+// funcion 5 mostrar items agregados en carrito y mi acumulador esta aqui adentro
 function mostrarItemsEnCarrito() {
   const prueba = carritoDeCompras.reduce((acc, el) => acc + el.precio, 0);
   if (carritoDeCompras.length == 0) {
     document.getElementById("itemsEnElCarrito").innerHTML = "<h3>INGRESA PRODUCTOS A TU CARRITO</h3>";
+    document.getElementById("acumuladorTotal").innerHTML = esp;
   } else {
     let html = "";
     for (let i = 0; i < carritoDeCompras.length; i++) {
@@ -113,8 +122,7 @@ function mostrarItemsEnCarrito() {
     document.getElementById("acumuladorTotal").innerHTML = acumulador;
   }
 }
-
-//funcion buscador
+//funcion buscador por tipos de licor funciona con minusculas!!!
 function buscadorItems(entradaAbuscar) {
   inventarioVinateria = [...inventarioVinateriaCopia];
   entradaAbuscar = document.getElementById("ingresoBuscadorItems").value;
@@ -126,13 +134,13 @@ function buscadorItems(entradaAbuscar) {
   mostrarItemsEnTienda();
 }
 //funcion 5 acceso pagina para el index
-
 const mostrarRegreso = () => {
   if (regresoOn >= 18) {
     document.getElementById("acceso").remove();
   }
 };
 mostrarRegreso();
+//funcion que permite acc a index poremos usar un a lib aqui
 function respuesta() {
   let inputValue = document.getElementById("entradaEdad").value;
   localStorage.setItem("inputValueEntradaEdad", inputValue);

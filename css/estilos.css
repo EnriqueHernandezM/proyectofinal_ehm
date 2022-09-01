@@ -255,6 +255,11 @@ body {
   color: rgb(255, 219, 136);
   font-family: "Trebuchet MS";
   font-weight: 400;
+  background-color: rgb(38, 51, 51);
+  height: 130vh;
+}
+#acceso h1 {
+  font-size: 1.5rem;
 }
 @media screen and (min-width: 992px) {
   #acceso h1 {
@@ -345,8 +350,14 @@ main h4 {
 main h3 {
   padding-top: 5rem;
   text-align: center;
-  font-size: 2.5rem;
-  padding: 3.5rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+@media screen and (min-width: 992px) {
+  main h3 {
+    font-size: 2.5rem;
+    padding: 3.5rem;
+  }
 }
 
 /*tienda*/
@@ -359,11 +370,12 @@ main h3 {
 }
 #barraTienda li {
   list-style: none;
-  padding-right: 2rem;
+  padding-right: 1rem;
 }
 @media screen and (min-width: 992px) {
   #barraTienda li {
     padding: 1rem 3rem 1rem 3rem;
+    padding-right: 2rem;
   }
 }
 #barraTienda li span {
