@@ -7,13 +7,13 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/estilos.css" />
   </head>
-  <body>
+  <body onload="anunciarTequilasEnIndex()">
     <header>
       <nav class="barraDeNavegacion">
         <h1 class="logoPrincipal"><a href="./index.html"> Jack Vinaterias</a></h1>
         <ul>
           <li><a href="###">PRODUCTOS</a></li>
-          <li><a href="###">BEBIDAS</a></li>
+          <li><a href="./paginas/bebidas.html">BEBIDAS</a></li>
           <li><a href="./paginas/tienda.html">TIENDA</a></li>
         </ul>
       </nav>
@@ -23,9 +23,11 @@
         <h1>Jack Vinaterias</h1>
         <label for="entradaEdad">Este es un sitio solo para mayores de edad : </label>
         <input type="number" id="entradaEdad" placeholder="edad" />
+        <input type="text" id="entradaNombre" placeholder="nombre" />
         <button type="button" onclick="respuesta()">Enviar</button>
       </div>
       <div id="respAnuncio"></div>
+      <div id="anuncioDestructuracion"></div>
       <article>
         <a href=""><img src="https://i.ytimg.com/vi/WGrX46hqSCc/maxresdefault.jpg" alt="whiskey Jack Daniels" /></a>
         <h3>

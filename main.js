@@ -7,6 +7,8 @@ regresoGcarrito = JSON.parse(regresoGcarrito);
 //array disponibles
 let inventarioVinateria = [];
 let carritoDeCompras = [];
+let artPreparacionBebidas = [];
+let ingredientes = [];
 //array de objetos constructror array itrms disp
 class ItemsDisponibles {
   constructor(imagen, id, nombreProducto, tipoDeLicor, precio) {
@@ -17,7 +19,25 @@ class ItemsDisponibles {
     this.precio = precio;
   }
 }
-
+// objetos constructor de artPrepararBebidas
+class BebidasApreparar {
+  constructor(imagen, tituloArt, descripcion) {
+    this.imagen = imagen;
+    this.tituloArt = tituloArt;
+    this.descripcion = descripcion;
+  }
+}
+//constructor para ingredientes
+class IngredientesParaBebidas {
+  constructor(ingrediente1, ingrediente2, ingrediente3, ingrediente4, ingrediente5) {
+    this.ingrediente1 = ingrediente1;
+    this.ingrediente2 = ingrediente2;
+    this.ingrediente3 = ingrediente3;
+    this.ingrediente4 = ingrediente4;
+    this.ingrediente5 = ingrediente5;
+  }
+}
+// objetos a agregar a inventarioVinaterias
 const item1 = new ItemsDisponibles("../imagenes/i111jack.jpg", 111, "Jack Daniels", "whiskey", 400);
 const item2 = new ItemsDisponibles("../imagenes/i444redL.jpg", 444, "Red Label", "whiskey", 370);
 const item3 = new ItemsDisponibles("../imagenes/i131wiliam.jpg", 131, "Wiliam Lawson", "whiskey", 350);
@@ -32,11 +52,22 @@ const item11 = new ItemsDisponibles("../imagenes/213absolut.jfif", 213, "Absolut
 const item12 = new ItemsDisponibles("../imagenes/222smirnof.jpg", 222, "Smirnof", "vodka", 300);
 
 inventarioVinateria.push(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12);
+//USAMOS SPREAD AQUI sacamos copia
 const inventarioVinateriaCopia = [...inventarioVinateria];
+//objetos a integrar en artPreparacionBebidas
+const art1 = new BebidasApreparar("../imagenes/miamiVice.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
+const art2 = new BebidasApreparar("../imagenes/piniaColada.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
+const art3 = new BebidasApreparar("../imagenes/bebMargarita.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
+
+artPreparacionBebidas.push(art1, art2, art3);
+//objetos a integrar en ingredientes
+const ingMiami = new IngredientesParaBebidas("60 mL ron blanco", "1 taza rodajas de fresas picadas", "30 mL zumo de limón", "30 mL zumo de limón", "60 mL jugo de piña");
+const ingMargarita = new IngredientesParaBebidas("60 mL ron blanco", "1 taza rodajas de fresas picadas", "30 mL zumo de limón", "30 mL zumo de limón", "60 mL jugo de piña");
+ingredientes.push(ingMiami, ingMargarita);
 // var espacio
 let esp = " ";
 //funcion 1 para mostrar items disponibles en pantalla
-function mostrarItemsEnTienda() {
+const mostrarItemsEnTienda = () => {
   let html = "";
   for (let i = 0; i < inventarioVinateria.length; i++) {
     html =
@@ -54,9 +85,9 @@ function mostrarItemsEnTienda() {
       `;
   }
   document.getElementById("itemsAmostrar").innerHTML = html;
-}
+};
 //funcion 2 para aniadir productos al carrito
-function addToCart(id) {
+const addToCart = (id) => {
   const productoIntroduzido = inventarioVinateria.find((item) => item.id == id);
   if (regresoGcarrito) {
     carritoDeCompras = regresoGcarrito;
@@ -64,9 +95,9 @@ function addToCart(id) {
   carritoDeCompras.push(productoIntroduzido);
   let carritoGuardado = JSON.stringify(carritoDeCompras); //guarde elementos push el localstore
   localStorage.setItem("carritoGuardado", carritoGuardado);
-}
+};
 //funcion 3 para quitar items en carrito
-function quitarDelCarrito(id) {
+const quitarDelCarrito = (id) => {
   if (regresoGcarrito) {
     carritoDeCompras = regresoGcarrito;
     carritoDeCompras.splice(id, 1);
@@ -77,16 +108,16 @@ function quitarDelCarrito(id) {
     carritoDeCompras.splice(id, 1);
     mostrarItemsEnCarrito();
   }
-}
+};
 // funcion 4 para mostrar mi carrito en otra pagina cuando la pag carge
-function mostrarEnPagCarrito() {
+const mostrarEnPagCarrito = () => {
   if (regresoGcarrito) {
     carritoDeCompras = regresoGcarrito;
     mostrarItemsEnCarrito();
   }
-}
+};
 // funcion 5 mostrar items agregados en carrito y mi acumulador esta aqui adentro
-function mostrarItemsEnCarrito() {
+const mostrarItemsEnCarrito = () => {
   const prueba = carritoDeCompras.reduce((acc, el) => acc + el.precio, 0);
   if (carritoDeCompras.length == 0) {
     document.getElementById("itemsEnElCarrito").innerHTML = "<h3>INGRESA PRODUCTOS A TU CARRITO</h3>";
@@ -121,9 +152,9 @@ function mostrarItemsEnCarrito() {
       `;
     document.getElementById("acumuladorTotal").innerHTML = acumulador;
   }
-}
+};
 //funcion buscador por tipos de licor funciona con minusculas!!!
-function buscadorItems(entradaAbuscar) {
+const buscadorItems = (entradaAbuscar) => {
   inventarioVinateria = [...inventarioVinateriaCopia];
   entradaAbuscar = document.getElementById("ingresoBuscadorItems").value;
   document.getElementById("ingresoBuscadorItems").value = "";
@@ -132,19 +163,17 @@ function buscadorItems(entradaAbuscar) {
   }
   inventarioVinateria = inventarioVinateria.filter((el) => el.tipoDeLicor.includes(entradaAbuscar));
   mostrarItemsEnTienda();
-}
-//funcion 5 acceso pagina para el index
+};
+//funcion 5 acceso pagina para el index Usamos OPERADOR TERNARIO!!!1
 const mostrarRegreso = () => {
-  if (regresoOn >= 18) {
-    document.getElementById("acceso").remove();
-  }
+  regreso >= 18 ? document.getElementById("acceso").remove() : document.getElementById("acceso");
 };
 mostrarRegreso();
-//funcion que permite acc a index poremos usar un a lib aqui
-function respuesta() {
+//funcion 6 que permite acc a index poremos usar un a lib aqui
+const respuesta = () => {
   let inputValue = document.getElementById("entradaEdad").value;
+  let inputValueNombre = document.getElementById("entradaNombre").value;
   localStorage.setItem("inputValueEntradaEdad", inputValue);
-
   while (inputValue <= 17) {
     let resp = "No tienes la edad suficiente para entrar en este sitio";
     alert(resp);
@@ -158,8 +187,10 @@ function respuesta() {
     </div>
     `;
     document.getElementById("respAnuncio").innerHTML = inset;
+    // USAMOS OPERADOR OR
+    // USAMOS OPERADOR OR
     let mostrando = "";
-    let resulta = " Hola tienes" + esp + inputValue + esp + "años" + esp + "bienvenido" + esp + "no olvides visitar nuestra Tienda";
+    let resulta = " Hola" + esp + (inputValueNombre || "Camarada") + esp + " tienes" + esp + inputValue + esp + "años" + esp + "bienvenido" + esp + "no olvides visitar nuestra Tienda";
     mostrando =
       mostrando +
       `<div>
@@ -174,6 +205,55 @@ function respuesta() {
     inputValue = 0;
     alert("no llenaste los campos requeridos");
   }
+};
+//funcion 7 que mostrara arrticulos bebidas en pagina bebidas
+function mostrarEnBebidas() {
+  let artB = " ";
+  for (let i = 0; i < artPreparacionBebidas.length; i++) {
+    artB += `
+    <div >
+      <p><img src="${artPreparacionBebidas[i].imagen}" ></p>
+      <p> ${artPreparacionBebidas[i].tituloArt}</p>
+      <p> ${artPreparacionBebidas[i].descripcion} </p>
+      <span onclick=respuestaArtBebidas("ingredientes");>ingredientes</span>
+      <span onclick=respuestaArtBebidas();>preparacion</span>
+    </div>
+    `;
+  }
+  document.getElementById("aquiVanArtBebidas").innerHTML = artB;
+}
+function respuestaArtBebidas(ingredientesB) {
+  let ing = " ";
+  ing += `
+  <div>
+    <ul>
+    <li>${ingredientes[1].ingrediente1}</li>
+    <li>${ingredientes[1].ingrediente2}</li>
+    <li>${ingredientes[1].ingrediente3}</li>
+    <li> ${ingredientes[1].ingrediente4}</li>
+    <li> ${ingredientes[1].ingrediente5}</li>
+    </ul>
+  </div>
+  `;
+  let prep = "";
+  prep += `
+  <div>
+  <p>Agregue las fresas, la mitad del ron, el jugo de lima y 1 taza de hielo picado a la licuadora y mezcle hasta que quede suave. Vierte la bebida en la copa Huracán y coloca el vaso en el congelador.
+  Agregue el resto del ron, la crema de coco y el jugo de piña a la licuadora. Agregue 1 taza de hielo picado y mezcle hasta que quede suave. Con cuidado vierta encima de la bebida que colocó en el congelador. Decorar con una rodaja de piña</p>
+  </div>
+  `; //Usamos OPERADOR TERNARIO!!!1
+  ingredientesB == "ingredientes" ? (document.getElementById("prueba").innerHTML = ing) : (document.getElementById("prueba").innerHTML = prep);
 }
 //Terminan Funciones.
+const anunciarTequilasEnIndex = () => {
+  //FuncionCREADA PARA DESTRUCTURIZACION DE ARRAY!!!!!
+  const [, , , p1, p2, p3] = inventarioVinateria;
+  tequ = "";
+  tequ += `
+  <div>
+  <h2> Tenemos de los mejores Tequilas!!! ${p1.nombreProducto}, ${p2.nombreProducto}, ${p3.nombreProducto}</h2>
+  </div>
+  `;
+  document.getElementById("anuncioDestructuracion").innerHTML = tequ;
+};
 mostrarItemsEnTienda();

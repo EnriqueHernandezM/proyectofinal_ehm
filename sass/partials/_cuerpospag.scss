@@ -291,3 +291,18 @@ main {
     }
   }
 }
+#aquiVanArtBebidas {
+  padding: 2rem;
+  div {
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    p {
+      img {
+        width: 13rem;
+        height: 14rem;
+      }
+    }
+  }
+}

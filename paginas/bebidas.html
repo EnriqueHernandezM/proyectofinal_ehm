@@ -7,35 +7,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/estilos.css" />
   </head>
-  <!-- use onload por que la funcion de guardar mw rompio y no me mostrava items en tienda.-->
-  <body onload="mostrarItemsEnTienda()">
+  <body onload="mostrarEnBebidas()">
     <header>
       <nav class="barraDeNavegacion">
         <h1 class="logoPrincipal"><a href="../index.html"> Jack Vinaterias</a></h1>
         <ul>
           <li><a href="###">PRODUCTOS</a></li>
-          <li><a href="../paginas/bebidas.html">BEBIDAS</a></li>
+          <li><a href="###">BEBIDAS</a></li>
           <li><a href="../paginas/tienda.html">TIENDA</a></li>
         </ul>
       </nav>
     </header>
     <main class="cuerpoPrincipalDePagina">
-      <ul id="barraTienda">
-        <li>
-          <span>
-            <a href="./carritocompras.html"> <img src="../imagenes/logocarrito.png" alt="ir a carrito de compras" /></a>
-          </span>
-        </li>
-        <li>
-          <span onclick="buscadorItems('')"><img src="https://cdn-icons-png.flaticon.com/512/839/839890.png" alt="Limpiar filtros" /></span>
-        </li>
-        <li><input type="text" id="ingresoBuscadorItems" placeholder="Busca por tipo de licor" /></li>
-        <li><button type="button" onclick="buscadorItems()">Buscar</button></li>
-      </ul>
-      <section>
-        <h3>Tenemos los mejores productos para ti</h3>
-        <div id="itemsAmostrar"></div>
-      </section>
+      <div id="aquiVanArtBebidas"></div>
+      <div id="prueba"></div>
     </main>
     <footer class="pieDePaginas">
       <h5>

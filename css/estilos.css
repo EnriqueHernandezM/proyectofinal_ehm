@@ -416,6 +416,20 @@ main h3 {
   height: 3rem;
 }
 
+#aquiVanArtBebidas {
+  padding: 2rem;
+}
+#aquiVanArtBebidas div {
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+#aquiVanArtBebidas div p img {
+  width: 13rem;
+  height: 14rem;
+}
+
 .pieDePaginas {
   background: wheat;
   color: rgb(0, 0, 0);
