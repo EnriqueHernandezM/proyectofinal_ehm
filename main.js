@@ -77,9 +77,9 @@ const mostrarItemsEnTienda = () => {
         <p><img src="${inventarioVinateria[i].imagen}"/> </p>
         <p> "${inventarioVinateria[i].nombreProducto}" </p>
         <p> $${inventarioVinateria[i].precio}</p>
-        <p>${inventarioVinateria[i].tipoDeLicor}</p>
+        <p >${inventarioVinateria[i].tipoDeLicor}</p>
         <p>
-        <span onclick=addToCart(${inventarioVinateria[i].id});>🛒</span>
+        <span onclick=addToCart(${inventarioVinateria[i].id}); > 🛒 </span>
         </p>
       </div>
       `;
@@ -95,19 +95,52 @@ const addToCart = (id) => {
   carritoDeCompras.push(productoIntroduzido);
   let carritoGuardado = JSON.stringify(carritoDeCompras); //guarde elementos push el localstore
   localStorage.setItem("carritoGuardado", carritoGuardado);
+  Swal.fire({
+    // aqui utilize 1 libreria
+    position: "top-end",
+    icon: "success",
+    title: "<p style=color:black>Agregaste un articulo a  tu carrito</p>",
+    showConfirmButton: false,
+    background: "url(../imagenes/madera.jpg)",
+    timer: 650,
+  });
 };
-//funcion 3 para quitar items en carrito
+//funcion 3 para quitar items en carrito AQUI use swwet alert
 const quitarDelCarrito = (id) => {
-  if (regresoGcarrito) {
-    carritoDeCompras = regresoGcarrito;
-    carritoDeCompras.splice(id, 1);
-    carritoGuardado = JSON.stringify(carritoDeCompras); //guarde elementos borrados del carrito el localstore
-    localStorage.setItem("carritoGuardado", carritoGuardado);
-    mostrarEnPagCarrito();
-  } else {
-    carritoDeCompras.splice(id, 1);
-    mostrarItemsEnCarrito();
-  }
+  Swal.fire({
+    title: "<h5 style=color:black >Quieres eliminar este producto de tu carrito ?</h5> ",
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonColor: "#92d1ff",
+    denyButtonColor: "fffec5",
+    confirmButtonText: "<i style=color:black > QUITAR </i>",
+    denyButtonText: "<i style=color:black > CANCELAR </i>",
+    background: "url(../imagenes/madera.jpg)",
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: " <p style=color:black> Producto eliminado </p>",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 500,
+        background: "url(../imagenes/madera.jpg)",
+      });
+
+      if (regresoGcarrito) {
+        carritoDeCompras = regresoGcarrito;
+        carritoDeCompras.splice(id, 1);
+        carritoGuardado = JSON.stringify(carritoDeCompras); //guarde elementos borrados del carrito el localstore
+        localStorage.setItem("carritoGuardado", carritoGuardado);
+        mostrarEnPagCarrito();
+      } else {
+        carritoDeCompras.splice(id, 1);
+        mostrarItemsEnCarrito();
+      }
+    } else if (result.isDenied) {
+      mostrarItemsEnCarrito();
+    }
+  });
 };
 // funcion 4 para mostrar mi carrito en otra pagina cuando la pag carge
 const mostrarEnPagCarrito = () => {
@@ -120,7 +153,7 @@ const mostrarEnPagCarrito = () => {
 const mostrarItemsEnCarrito = () => {
   const prueba = carritoDeCompras.reduce((acc, el) => acc + el.precio, 0);
   if (carritoDeCompras.length == 0) {
-    document.getElementById("itemsEnElCarrito").innerHTML = "<h3>INGRESA PRODUCTOS A TU CARRITO</h3>";
+    document.getElementById("itemsEnElCarrito").innerHTML = "<h3 class = 'animate__animated animate__flash' >INGRESA PRODUCTOS A TU CARRITO</h3>";
     document.getElementById("acumuladorTotal").innerHTML = esp;
   } else {
     let html = "";
@@ -147,8 +180,8 @@ const mostrarItemsEnCarrito = () => {
         <div>
           <h2>Total</h2>
           <h3>$${prueba}</h3>
-          <button> pagar</button>
-        </div>
+          <button onclick="pasarApagar()"> pagar </button>
+        </div >
       `;
     document.getElementById("acumuladorTotal").innerHTML = acumulador;
   }
@@ -166,18 +199,21 @@ const buscadorItems = (entradaAbuscar) => {
 };
 //funcion 5 acceso pagina para el index Usamos OPERADOR TERNARIO!!!1
 const mostrarRegreso = () => {
-  regreso >= 18 ? document.getElementById("acceso").remove() : document.getElementById("acceso");
+  if (regresoOn >= 18) {
+    document.getElementById("acceso").remove();
+  } else if (regresoOn <= 17) {
+    bloquearAcceso();
+  } else if (regresoOn == " ") {
+    document.getElementById("acceso");
+    respuesta();
+  }
 };
 mostrarRegreso();
 //funcion 6 que permite acc a index poremos usar un a lib aqui
-const respuesta = () => {
+function respuesta() {
   let inputValue = document.getElementById("entradaEdad").value;
   let inputValueNombre = document.getElementById("entradaNombre").value;
   localStorage.setItem("inputValueEntradaEdad", inputValue);
-  while (inputValue <= 17) {
-    let resp = "No tienes la edad suficiente para entrar en este sitio";
-    alert(resp);
-  }
   if (inputValue >= 18) {
     let inset = "";
     inset =
@@ -201,11 +237,25 @@ const respuesta = () => {
       `;
     document.getElementById("anuncioEntrada").innerHTML = mostrando;
     document.getElementById("acceso").remove();
-  } else {
-    inputValue = 0;
-    alert("no llenaste los campos requeridos");
+  } else if (inputValue < 17) {
+    bloquearAcceso();
   }
-};
+}
+// duncion para bloquear acceso con un swal fire
+function bloquearAcceso() {
+  Swal.fire({
+    title: "<h5> Al parecer eres menor de edad</h5>",
+    icon: "warning",
+    html: " NO tomes antes de los 18 te recomendamos visitar este sitio web " + "<a href=https://www.clinicaalemana.cl/centro-de-extension/material-educativo/no-tomes-antes-de-los-18> VISITAR </a> ",
+    showCloseButton: false,
+    showCancelButton: false,
+    focusConfirm: false,
+    showConfirmButton: false,
+    confirmButtonText: false,
+    confirmButtonAriaLabel: false,
+    allowOutsideClick: false,
+  });
+}
 //funcion 7 que mostrara arrticulos bebidas en pagina bebidas
 function mostrarEnBebidas() {
   let artB = " ";
@@ -244,16 +294,22 @@ function respuestaArtBebidas(ingredientesB) {
   `; //Usamos OPERADOR TERNARIO!!!1
   ingredientesB == "ingredientes" ? (document.getElementById("prueba").innerHTML = ing) : (document.getElementById("prueba").innerHTML = prep);
 }
-//Terminan Funciones.
-const anunciarTequilasEnIndex = () => {
-  //FuncionCREADA PARA DESTRUCTURIZACION DE ARRAY!!!!!
-  const [, , , p1, p2, p3] = inventarioVinateria;
-  tequ = "";
-  tequ += `
-  <div>
-  <h2> Tenemos de los mejores Tequilas!!! ${p1.nombreProducto}, ${p2.nombreProducto}, ${p3.nombreProducto}</h2>
-  </div>
-  `;
-  document.getElementById("anuncioDestructuracion").innerHTML = tequ;
-};
+function pasarApagar() {
+  Swal.fire({
+    title: "<strong style=color:white> Pagar carrito </strong>",
+    html: "<p style=color:white>has concluido tu compra? Ve a metodo de pago</p>, " + "<p>💳</p> ",
+    showCloseButton: false,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText: '<a style=color:black class="fa fa-thumbs-up href="//sweetalert2.github.io">VAMOS</a> ',
+    confirmButtonAriaLabel: "Thumbs up, great!",
+    confirmButtonColor: "#92d1ff",
+    cancelButtonText: '<i style=color:black class="fa fa-thumbs-down" > SEGUIR COMPRANDO</i>',
+    cancelButtonAriaLabel: "Thumbs down",
+    cancelButtonColor: "#fffec5",
+    footer: '<a style=color:white href="">Mas informacion sobre seguridad y pagos</a>',
+    backdrop: "#bfbfbf5f",
+    background: "#000000",
+  });
+}
 mostrarItemsEnTienda();

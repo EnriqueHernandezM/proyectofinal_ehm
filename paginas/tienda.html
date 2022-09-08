@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="../css/estilos.css" />
   </head>
   <!-- use onload por que la funcion de guardar mw rompio y no me mostrava items en tienda.-->
@@ -33,7 +34,7 @@
         <li><button type="button" onclick="buscadorItems()">Buscar</button></li>
       </ul>
       <section>
-        <h3>Tenemos los mejores productos para ti</h3>
+        <h3 class="animate__animated animate__flash">Tenemos los mejores productos para ti</h3>
         <div id="itemsAmostrar"></div>
       </section>
     </main>
@@ -52,6 +53,7 @@
       </ul>
       <h5>Terminos Y Condiciones</h5>
     </footer>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../main.js"></script>
   </body>
 </html>

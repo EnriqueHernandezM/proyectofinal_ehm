@@ -164,10 +164,10 @@
   color: rgb(255, 219, 136);
   font-family: "Trebuchet MS";
   font-weight: 400;
-  background-color: rgb(38, 51, 51);
+  background-color: rgba(38, 51, 51, 0.875);
   height: 130vh;
   @include adaptablePagina {
-    background-color: rgb(38, 51, 51);
+    background-color: rgba(38, 51, 51, 0.875);
     padding: 3rem;
     height: 182vh;
   }
@@ -186,13 +186,15 @@
     @include adaptablePagina {
       height: 2rem;
       border-radius: 5%;
-      width: 3rem;
+      width: 8rem;
+      margin: 0.25rem;
     }
   }
   button {
     border-radius: 5%;
     height: 2rem;
-    width: 3rem;
+    width: 5rem;
+    margin: 0.75rem;
   }
 }
 #anuncioEntrada {
@@ -207,7 +209,7 @@
   opacity: 0;
   animation-name: desaparecer;
   animation-duration: 7s;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
   font-size: 1.25rem;
   color: rgb(255, 219, 136);
   font-family: "Trebuchet MS";
