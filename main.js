@@ -58,7 +58,7 @@ const inventarioVinateriaCopia = [...inventarioVinateria];
 const art1 = new BebidasApreparar("../imagenes/miamiVice.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
 const art2 = new BebidasApreparar("../imagenes/piniaColada.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
 const art3 = new BebidasApreparar("../imagenes/bebMargarita.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
-
+console.log(inventarioVinateria);
 artPreparacionBebidas.push(art1, art2, art3);
 //objetos a integrar en ingredientes
 const ingMiami = new IngredientesParaBebidas("60 mL ron blanco", "1 taza rodajas de fresas picadas", "30 mL zumo de limón", "30 mL zumo de limón", "60 mL jugo de piña");
@@ -272,7 +272,7 @@ function mostrarEnBebidas() {
   }
   document.getElementById("aquiVanArtBebidas").innerHTML = artB;
 }
-function respuestaArtBebidas(ingredientesB) {
+/* function respuestaArtBebidas(ingredientesB) {
   let ing = " ";
   ing += `
   <div>
@@ -293,7 +293,7 @@ function respuestaArtBebidas(ingredientesB) {
   </div>
   `; //Usamos OPERADOR TERNARIO!!!1
   ingredientesB == "ingredientes" ? (document.getElementById("prueba").innerHTML = ing) : (document.getElementById("prueba").innerHTML = prep);
-}
+} */
 function pasarApagar() {
   Swal.fire({
     title: "<strong style=color:white> Pagar carrito </strong>",
@@ -312,4 +312,60 @@ function pasarApagar() {
     background: "#000000",
   });
 }
-mostrarItemsEnTienda();
+//
+//
+//Aqui Empezamos el fetch6
+//
+//
+function buscarA(link) {
+  fetch(link)
+    .then((r) => r.json())
+    .then((json) => {
+      let arrayA = json.drinks;
+      console.log(arrayA);
+      let a = "";
+      arrayA.forEach((drinks) => {
+        a += `
+      <div>
+        <p><img src=" ${drinks.strDrinkThumb}"></p>
+        <h1> ${drinks.strDrink}</h1>
+        <ul>
+        <li> <p> ${drinks.strMeasure1 + drinks.strIngredient1}</P></li>
+        <li><p> ${drinks.strMeasure2 + drinks.strIngredient2 || ""}</P></li>
+        <li> <p> ${drinks.strMeasure3 + drinks.strIngredient3 || ""}</P></li>
+        <li><p> ${drinks.strMeasure4 + drinks.strIngredient4 || ""}</P></li>
+        <li><p> ${drinks.strMeasure5 + drinks.strIngredient5 || " "}</P></li>
+        <li> <p> ${drinks.strInstructionsES || " "}</p></li>
+        </ul>
+      </div>
+      `;
+      });
+      document.getElementById("buscadorDeBebidas").innerHTML = a;
+    })
+
+    .catch((e) => {
+      console.log(e);
+    });
+}
+function llamarApi() {
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic")
+    .then((res) => res.json())
+    .then((json) => {
+      let coctailAraray = json.drinks;
+      coctailAraray = coctailAraray.slice(95, 105);
+      console.log(coctailAraray);
+      let bebidasApi = "";
+      coctailAraray.forEach((drinks) => {
+        bebidasApi += `
+<div>
+<p><img src=" ${drinks.strDrinkThumb}"></p>
+<p> ${drinks.strDrink} </p>
+</div>
+`;
+      });
+      document.getElementById("usandoApi").innerHTML = bebidasApi;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+}

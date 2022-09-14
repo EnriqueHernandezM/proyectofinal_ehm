@@ -432,6 +432,80 @@ main h3 {
   height: 14rem;
 }
 
+#usandoApi {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#usandoApi div {
+  padding: 2.25rem;
+}
+#usandoApi div p {
+  text-align: center;
+  padding: 0.5rem;
+}
+#usandoApi div p img {
+  width: 10rem;
+}
+
+.aquiIraLaBarraBuscarPorLetra {
+  padding-bottom: 10rem;
+}
+.aquiIraLaBarraBuscarPorLetra h4 {
+  font-size: 2.5rem;
+}
+.aquiIraLaBarraBuscarPorLetra h1 {
+  text-align: center;
+}
+.aquiIraLaBarraBuscarPorLetra ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.aquiIraLaBarraBuscarPorLetra ul li {
+  cursor: pointer;
+  list-style: none;
+  padding: 1rem;
+}
+.aquiIraLaBarraBuscarPorLetra ul li a {
+  font-size: 2rem;
+}
+
+#buscadorDeBebidas {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#buscadorDeBebidas div {
+  width: 30vw;
+  padding: 0.5rem;
+}
+#buscadorDeBebidas div h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+#buscadorDeBebidas div p {
+  text-align: center;
+}
+#buscadorDeBebidas div p img {
+  padding: 0.45rem;
+  width: 15rem;
+}
+#buscadorDeBebidas div ul {
+  padding: 1rem;
+}
+#buscadorDeBebidas div ul li {
+  list-style: none;
+}
+#buscadorDeBebidas div ul li p {
+  text-align: left;
+  font-size: 1.25rem;
+}
+
 .pieDePaginas {
   background: wheat;
   color: rgb(0, 0, 0);

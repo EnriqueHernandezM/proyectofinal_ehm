@@ -1,0 +1,9 @@
+[
+  { "imagen": "https://enriquehernandezm.github.io/proyectofinal_ehm/imagenes/i111jack.jpg", "id": 111, "nombreProducto": "Jack Daniels", "tipoDeLicor": "whiskey", "precio": 400 },
+  { "imagen": "https://enriquehernandezm.github.io/proyectofinal_ehm/imagenes/i444redL.jpg", "id": 444, "nombreProducto": "Red Label", "tipoDeLicor": "whiskey", "precio": 370 },
+  { "imagen": "https://enriquehernandezm.github.io/proyectofinal_ehm/imagenes/i131wiliam.jpg", "id": 131, " nombreProducto": "Wiliam Lawson", "tipoDeLicor": "whiskey", "precio": 350 },
+  { "imagen": "https://enriquehernandezm.github.io/proyectofinal_ehm/imagenes/i112DonJ.jpg", "id": 112, "nombreProducto": "Don julio", "tipoDeLicor": "tequila", "precio": 300 },
+  { "imagen": "https://enriquehernandezm.github.io/proyectofinal_ehm/imagenes/i107jose.jpg", "id": 107, "nombreProducto": "Jose Cuervo", "tipoDeLicor": "tequila", "precio": 250 },
+  { "imagen": "http://127.0.0.1:5502/root/imagenes/i124jimador.jpg", "id": 124, "nombreProducto": "Jimador", "tipoDeLicor": "tequila", "precio": 200 },
+  { "imagen": "http://127.0.0.1:5502/root/imagenes/i180capitan.jpg", "id": 180, "nombreProducto": "Capitan Morgan", "tipoDeLicor": "ron", "precio": 240 }
+]

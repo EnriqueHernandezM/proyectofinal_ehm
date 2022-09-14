@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/estilos.css" />
   </head>
-  <body onload="mostrarEnBebidas()">
+  <body onload="llamarApi()">
     <header>
       <nav class="barraDeNavegacion">
         <h1 class="logoPrincipal"><a href="../index.html"> Jack Vinaterias</a></h1>
@@ -21,6 +21,40 @@
     <main class="cuerpoPrincipalDePagina">
       <div id="aquiVanArtBebidas"></div>
       <div id="prueba"></div>
+      <h4>Increibles Bebidas</h4>
+      <div id="usandoApi"></div>
+      <div id="buscadorDeBebidas"></div>
+      <div class="aquiIraLaBarraBuscarPorLetra">
+        <h4>Puedes Buscar Bebidas por letra</h4>
+        <ul>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')"> A</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=b');"> B</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=c');"> C</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=d');"> E</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=e');"> D</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=f');"> F</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=g');"> G</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=h');"> H</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=i');"> I</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=j');"> J</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=k');"> K</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=l');"> L</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=m');"> M</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=n');"> N</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=o');"> O</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=p');"> P</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=q');"> Q</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=r');"> R</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=s');"> S</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=t');"> T</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=u');"> U</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=v');"> V</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=w');"> W</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=x');"> X</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=y');"> Y</a></li>
+          <li><a onclick="buscarA('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=z');"> Z</a></li>
+        </ul>
+      </div>
     </main>
     <footer class="pieDePaginas">
       <h5>
