@@ -4,67 +4,41 @@ let regresoOn = parseInt(regreso);
 //variables con las que regreso el carrito de compras
 let regresoGcarrito = localStorage.getItem("carritoGuardado");
 regresoGcarrito = JSON.parse(regresoGcarrito);
+//
+//
+//1er fetch
+fetch("../data.json")
+  .then((res) => res.json())
+  .then((json) => {
+    let nuevoarray = json;
+    console.log(nuevoarray);
+    let arrayArticulosEnJson = JSON.stringify(nuevoarray); //guarde elementos push el localstore
+    localStorage.setItem("arrayArticulosEnJson", arrayArticulosEnJson);
+  })
+  .catch((e) => {
+    console.log(e + "error");
+  });
+
+let traerarrayArticulosEnJson = localStorage.getItem("arrayArticulosEnJson");
+traerarrayArticulosEnJson = JSON.parse(traerarrayArticulosEnJson);
+//funcion que me premiste saber si el cliente ya accedio siendo mayor de edad
+const mostrarRegreso = () => {
+  if (regresoOn >= 18) {
+    document.getElementById("acceso").remove();
+  } else if (regresoOn <= 17) {
+    bloquearAcceso();
+  } else if (regresoOn == " ") {
+    document.getElementById("acceso");
+    respuesta();
+  }
+};
 //array disponibles
-let inventarioVinateria = [];
+let inventarioVinateria = traerarrayArticulosEnJson;
 let carritoDeCompras = [];
 let artPreparacionBebidas = [];
 let ingredientes = [];
-//array de objetos constructror array itrms disp
-class ItemsDisponibles {
-  constructor(imagen, id, nombreProducto, tipoDeLicor, precio) {
-    this.imagen = imagen;
-    this.id = id;
-    this.nombreProducto = nombreProducto;
-    this.tipoDeLicor = tipoDeLicor;
-    this.precio = precio;
-  }
-}
-// objetos constructor de artPrepararBebidas
-class BebidasApreparar {
-  constructor(imagen, tituloArt, descripcion) {
-    this.imagen = imagen;
-    this.tituloArt = tituloArt;
-    this.descripcion = descripcion;
-  }
-}
-//constructor para ingredientes
-class IngredientesParaBebidas {
-  constructor(ingrediente1, ingrediente2, ingrediente3, ingrediente4, ingrediente5) {
-    this.ingrediente1 = ingrediente1;
-    this.ingrediente2 = ingrediente2;
-    this.ingrediente3 = ingrediente3;
-    this.ingrediente4 = ingrediente4;
-    this.ingrediente5 = ingrediente5;
-  }
-}
-// objetos a agregar a inventarioVinaterias
-const item1 = new ItemsDisponibles("../imagenes/i111jack.jpg", 111, "Jack Daniels", "whiskey", 400);
-const item2 = new ItemsDisponibles("../imagenes/i444redL.jpg", 444, "Red Label", "whiskey", 370);
-const item3 = new ItemsDisponibles("../imagenes/i131wiliam.jpg", 131, "Wiliam Lawson", "whiskey", 350);
-const item4 = new ItemsDisponibles("../imagenes/i112DonJ.jpg", 112, "Don julio", "tequila", 300);
-const item5 = new ItemsDisponibles("../imagenes/i107jose.jpg", 107, "Jose Cuervo", "tequila", 250);
-const item6 = new ItemsDisponibles("../imagenes/i124jimador.jpg", 124, "Jimador", "tequila", 200);
-const item7 = new ItemsDisponibles("../imagenes/i180capitan.jpg", 180, "Capitan Morgan", "ron", 240);
-const item8 = new ItemsDisponibles("../imagenes/i100Bac.jpeg", 100, "Bacardi", "ron", 260);
-const item9 = new ItemsDisponibles("../imagenes/i166kraken.jpg", 166, "Kraken", "ron", 340);
-const item10 = new ItemsDisponibles("../imagenes/i125black.jpg", 125, "Red Label Black", "whiskey", 600);
-const item11 = new ItemsDisponibles("../imagenes/213absolut.jfif", 213, "Absolut Vodka", "vodka", 400);
-const item12 = new ItemsDisponibles("../imagenes/222smirnof.jpg", 222, "Smirnof", "vodka", 300);
-
-inventarioVinateria.push(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12);
 //USAMOS SPREAD AQUI sacamos copia
 const inventarioVinateriaCopia = [...inventarioVinateria];
-//objetos a integrar en artPreparacionBebidas
-const art1 = new BebidasApreparar("../imagenes/miamiVice.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
-const art2 = new BebidasApreparar("../imagenes/piniaColada.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
-const art3 = new BebidasApreparar("../imagenes/bebMargarita.jpg", "miami Vice", "combinacion entre pinia colada y fresa");
-console.log(inventarioVinateria);
-artPreparacionBebidas.push(art1, art2, art3);
-//objetos a integrar en ingredientes
-const ingMiami = new IngredientesParaBebidas("60 mL ron blanco", "1 taza rodajas de fresas picadas", "30 mL zumo de limón", "30 mL zumo de limón", "60 mL jugo de piña");
-const ingMargarita = new IngredientesParaBebidas("60 mL ron blanco", "1 taza rodajas de fresas picadas", "30 mL zumo de limón", "30 mL zumo de limón", "60 mL jugo de piña");
-ingredientes.push(ingMiami, ingMargarita);
-// var espacio
 let esp = " ";
 //funcion 1 para mostrar items disponibles en pantalla
 const mostrarItemsEnTienda = () => {
@@ -149,6 +123,7 @@ const mostrarEnPagCarrito = () => {
     mostrarItemsEnCarrito();
   }
 };
+
 // funcion 5 mostrar items agregados en carrito y mi acumulador esta aqui adentro
 const mostrarItemsEnCarrito = () => {
   const prueba = carritoDeCompras.reduce((acc, el) => acc + el.precio, 0);
@@ -198,19 +173,8 @@ const buscadorItems = (entradaAbuscar) => {
   mostrarItemsEnTienda();
 };
 //funcion 5 acceso pagina para el index Usamos OPERADOR TERNARIO!!!1
-const mostrarRegreso = () => {
-  if (regresoOn >= 18) {
-    document.getElementById("acceso").remove();
-  } else if (regresoOn <= 17) {
-    bloquearAcceso();
-  } else if (regresoOn == " ") {
-    document.getElementById("acceso");
-    respuesta();
-  }
-};
-mostrarRegreso();
-//funcion 6 que permite acc a index poremos usar un a lib aqui
 function respuesta() {
+  let esp = " ";
   let inputValue = document.getElementById("entradaEdad").value;
   let inputValueNombre = document.getElementById("entradaNombre").value;
   localStorage.setItem("inputValueEntradaEdad", inputValue);
@@ -272,28 +236,6 @@ function mostrarEnBebidas() {
   }
   document.getElementById("aquiVanArtBebidas").innerHTML = artB;
 }
-/* function respuestaArtBebidas(ingredientesB) {
-  let ing = " ";
-  ing += `
-  <div>
-    <ul>
-    <li>${ingredientes[1].ingrediente1}</li>
-    <li>${ingredientes[1].ingrediente2}</li>
-    <li>${ingredientes[1].ingrediente3}</li>
-    <li> ${ingredientes[1].ingrediente4}</li>
-    <li> ${ingredientes[1].ingrediente5}</li>
-    </ul>
-  </div>
-  `;
-  let prep = "";
-  prep += `
-  <div>
-  <p>Agregue las fresas, la mitad del ron, el jugo de lima y 1 taza de hielo picado a la licuadora y mezcle hasta que quede suave. Vierte la bebida en la copa Huracán y coloca el vaso en el congelador.
-  Agregue el resto del ron, la crema de coco y el jugo de piña a la licuadora. Agregue 1 taza de hielo picado y mezcle hasta que quede suave. Con cuidado vierta encima de la bebida que colocó en el congelador. Decorar con una rodaja de piña</p>
-  </div>
-  `; //Usamos OPERADOR TERNARIO!!!1
-  ingredientesB == "ingredientes" ? (document.getElementById("prueba").innerHTML = ing) : (document.getElementById("prueba").innerHTML = prep);
-} */
 function pasarApagar() {
   Swal.fire({
     title: "<strong style=color:white> Pagar carrito </strong>",
@@ -314,7 +256,7 @@ function pasarApagar() {
 }
 //
 //
-//Aqui Empezamos el fetch6
+//Aqui 2do fetch
 //
 //
 function buscarA(link) {
@@ -369,3 +311,4 @@ function llamarApi() {
       console.log(e);
     });
 }
+mostrarItemsEnTienda();
