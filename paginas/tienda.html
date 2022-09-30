@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="../css/estilos.css" />
   </head>
-  <!-- use onload por que la funcion de guardar mw rompio y no me mostrava items en tienda.-->
   <body>
     <header>
       <nav class="barraDeNavegacion">
@@ -17,7 +17,7 @@
         <ul>
           <li><a href="###">PRODUCTOS</a></li>
           <li><a href="../paginas/bebidas.html">BEBIDAS</a></li>
-          <li><a onmouseover="location.reload();" href="../paginas/tienda.html">TIENDA</a></li>
+          <li><a href="../paginas/tienda.html">TIENDA</a></li>
         </ul>
       </nav>
     </header>
@@ -31,13 +31,23 @@
         <li>
           <span onclick="buscadorItems('')"><img src="https://cdn-icons-png.flaticon.com/512/839/839890.png" alt="Limpiar filtros" /></span>
         </li>
-        <li><input type="text" id="ingresoBuscadorItems" placeholder="Busca por tipo de licor" /></li>
+        <li>
+          <input type="text" id="ingresoBuscadorItems" placeholder="Busca por tipo de licor" />
+          <p id="sugerencias"></p>
+        </li>
         <li><button type="button" onclick="buscadorItems()">Buscar</button></li>
       </ul>
+
       <section>
         <h3>Tenemos los mejores productos para ti</h3>
         <div id="itemsAmostrar"></div>
       </section>
+      <div class="cajaDeComentarios">
+        <h5>Aca aceptamos sugerencias o comentarios</h5>
+        <textarea id="comentarioIngresadoAlaCaja" placeholder="ingresa un comentario sobre tu experiencia" maxlength="69"></textarea>
+        <button type="button" onclick="IngresadorDeComentarios()">Postear</button>
+        <p id="comentariosHechos"></p>
+      </div>
     </main>
     <footer class="pieDePaginas">
       <h5>
@@ -54,7 +64,11 @@
       </ul>
       <h5>Terminos Y Condiciones</h5>
     </footer>
+    <script src="anime.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
+
     <script src="../main.js"></script>
   </body>
 </html>

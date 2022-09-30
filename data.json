@@ -1,21 +1,24 @@
-[
-  { "imagen": "../imagenes/i111jack.jpg", "id": 111, "nombreProducto": "Jack Daniels", "tipoDeLicor": "whiskey", "precio": 400 },
-  { "imagen": "../imagenes/i444redL.jpg", "id": 444, "nombreProducto": "Red Label", "tipoDeLicor": "whiskey", "precio": 370 },
-  { "imagen": "../imagenes/i131wiliam.jpg", "id": 131, " nombreProducto": "Wiliam Lawson", "tipoDeLicor": "whiskey", "precio": 350 },
-  { "imagen": "../imagenes/i112DonJ.jpg", "id": 112, "nombreProducto": "Don julio", "tipoDeLicor": "tequila", "precio": 300 },
-  { "imagen": "../imagenes/i107jose.jpg", "id": 107, "nombreProducto": "Jose Cuervo", "tipoDeLicor": "tequila", "precio": 250 },
-  { "imagen": "../imagenes/i124jimador.jpg", "id": 124, "nombreProducto": "Jimador", "tipoDeLicor": "tequila", "precio": 200 },
-  { "imagen": "https://enriquehernandezm.github.io/incorporarEventos/imagenes/i180capitan.jpg", "id": 180, "nombreProducto": "Capitan Morgan", "tipoDeLicor": "ron", "precio": 240 },
-  { "imagen": "../imagenes/i100Bac.jpeg", "id": 100, "nombreProducto": "Bacardi", "tipoDeLicor": "ron", "precio": 260 },
-  { "imagen": "../imagenes/i166kraken.jpg", "id": 166, "nombreProducto": "Kraken", "tipoDeLicor": "ron", "precio": 340 },
-  { "imagen": "../imagenes/i125black.jpg", "id": 125, "nombreProducto": "Red Label Black", "tipoDeLicor": "whiskey", "precio": 600 },
-  { "imagen": "../imagenes/213absolut.jfif", "id": 213, "nombreProducto": "Absolut Vodka", "tipoDeLicor": "vodka", "precio": 400 },
-  { "imagen": "../imagenes/222smirnof.jpg", "id": 222, "nombreProducto": "Smirnof", "tipoDeLicor": "vodka", "precio": 300 },
-  { "imagen": "../imagenes/511sky.jpg", "id": 511, "nombreProducto": "Sky Blue", "tipoDeLicor": "vodka", "precio": 220 },
-  { "imagen": "../imagenes/24Torres.jpg", "id": 24, "nombreProducto": "Torres 10", "tipoDeLicor": "brandy", "precio": 310 },
-  { "imagen": "../imagenes/158donped.jpg", "id": 158, "nombreProducto": "Don Pedro", "tipoDeLicor": "brandy", "precio": 250 },
-  { "imagen": "../imagenes/358corralejo.jpg", "id": 358, "nombreProducto": "Corralejo", "tipoDeLicor": "tequila", "precio": 550 },
-  { "imagen": "../imagenes/999buchan.jpg", "id": 999, "nombreProducto": "Buchanan's Deluxe", "tipoDeLicor": "whiskey", "precio": 650 },
-  { "imagen": "../imagenes/454president.jpeg", "id": 454, "nombreProducto": "Presidente", "tipoDeLicor": "brandy", "precio": 199 },
-  { "imagen": "../imagenes/474nuvo.jpg", "id": 474, "nombreProducto": "Nuvo", "tipoDeLicor": "vodka", "precio": 711 }
-]
+{
+  "itemsDisponebles": [
+    { "imagen": "../imagenes/i111jack.jpg", "id": 111, "nombreProducto": "Jack Daniels", "tipoDeLicor": "whiskey", "precio": 400 },
+    { "imagen": "../imagenes/i444redL.jpg", "id": 444, "nombreProducto": "Red Label", "tipoDeLicor": "whiskey", "precio": 370 },
+    { "imagen": "../imagenes/i131wiliam.jpg", "id": 131, " nombreProducto": "Wiliam Lawson", "tipoDeLicor": "whiskey", "precio": 350 },
+    { "imagen": "../imagenes/i112DonJ.jpg", "id": 112, "nombreProducto": "Don julio", "tipoDeLicor": "tequila", "precio": 300 },
+    { "imagen": "../imagenes/i107jose.jpg", "id": 107, "nombreProducto": "Jose Cuervo", "tipoDeLicor": "tequila", "precio": 250 },
+    { "imagen": "../imagenes/i124jimador.jpg", "id": 124, "nombreProducto": "Jimador", "tipoDeLicor": "tequila", "precio": 200 },
+    { "imagen": "https://enriquehernandezm.github.io/incorporarEventos/imagenes/i180capitan.jpg", "id": 180, "nombreProducto": "Capitan Morgan", "tipoDeLicor": "ron", "precio": 240 },
+    { "imagen": "../imagenes/i100Bac.jpeg", "id": 100, "nombreProducto": "Bacardi", "tipoDeLicor": "ron", "precio": 260 },
+    { "imagen": "../imagenes/i166kraken.jpg", "id": 166, "nombreProducto": "Kraken", "tipoDeLicor": "ron", "precio": 340 },
+    { "imagen": "../imagenes/i125black.jpg", "id": 125, "nombreProducto": "Red Label Black", "tipoDeLicor": "whiskey", "precio": 600 },
+    { "imagen": "../imagenes/213absolut.jfif", "id": 213, "nombreProducto": "Absolut Vodka", "tipoDeLicor": "vodka", "precio": 400 },
+    { "imagen": "../imagenes/222smirnof.jpg", "id": 222, "nombreProducto": "Smirnof", "tipoDeLicor": "vodka", "precio": 300 },
+    { "imagen": "../imagenes/511sky.jpg", "id": 511, "nombreProducto": "Sky Blue", "tipoDeLicor": "vodka", "precio": 220 },
+    { "imagen": "../imagenes/24Torres.jpg", "id": 24, "nombreProducto": "Torres 10", "tipoDeLicor": "brandy", "precio": 310 },
+    { "imagen": "../imagenes/158donped.jpg", "id": 158, "nombreProducto": "Don Pedro", "tipoDeLicor": "brandy", "precio": 250 },
+    { "imagen": "../imagenes/358corralejo.jpg", "id": 358, "nombreProducto": "Corralejo", "tipoDeLicor": "tequila", "precio": 550 },
+    { "imagen": "../imagenes/999buchan.jpg", "id": 999, "nombreProducto": "Buchanan's Deluxe", "tipoDeLicor": "whiskey", "precio": 650 },
+    { "imagen": "../imagenes/454president.jpeg", "id": 454, "nombreProducto": "Presidente", "tipoDeLicor": "brandy", "precio": 199 },
+    { "imagen": "../imagenes/474nuvo.jpg", "id": 474, "nombreProducto": "Nuvo", "tipoDeLicor": "vodka", "precio": 711 }
+  ],
+  "coments": [{ "comentario": "piritidjudbvkjbvkjbsjbjanvkjfbg,ebhj dghjdfhufsfv.kjfv" }]
+}

@@ -255,17 +255,30 @@ main {
       padding: 1rem 3rem 1rem 3rem;
       padding-right: 2rem;
     }
-    padding-right: 1rem;
+    padding-right: 10px;
     span {
       text-decoration: none;
       color: black;
       font-size: 1.5rem;
       cursor: pointer;
-
       img {
         width: 4rem;
         padding: 1rem;
       }
+    }
+    p {
+      color: rgb(80, 68, 0);
+      font-size: 1.5rem;
+    }
+    input {
+      background-color: aliceblue;
+      border-radius: 4px;
+      padding: 0.125rem;
+    }
+    button {
+      background-color: aliceblue;
+      padding: 0.125rem;
+      border-radius: 4px;
     }
   }
 }
@@ -278,18 +291,37 @@ main {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     h2 {
-      font-size: 2;
+      font-size: 1.75rem;
+      padding: 0rem 6.5rem 0rem 2rem;
+      @include adaptablePaginaTablet {
+        padding: 0;
+        font-size: 1.75rem;
+      }
     }
     h3 {
-      font-size: 2rem;
+      font-size: 1.75rem;
       @include adaptablePagina {
         padding-left: 36.5rem;
       }
     }
     button {
-      width: 4rem;
-      height: 3rem;
+      width: 3rem;
+      height: 2rem;
+      padding: 1px;
+      margin: 1px;
+      background-color: aliceblue;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      @include adaptablePaginaTablet {
+        width: 5rem;
+        height: 3rem;
+        padding: 0.255rem;
+        margin: 5px;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
     }
   }
 }
@@ -327,7 +359,10 @@ main {
 .aquiIraLaBarraBuscarPorLetra {
   padding-bottom: 10rem;
   h4 {
-    font-size: 2.5rem;
+    font-size: 1.45rem;
+    @include adaptablePaginaTablet {
+      font-size: 2.5rem;
+    }
   }
 
   h1 {
@@ -351,13 +386,19 @@ main {
 #buscadorDeBebidas {
   padding-top: 4rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-
+  @include adaptablePaginaTablet {
+    flex-direction: row;
+  }
   div {
-    width: 30vw;
-    padding: 0.5rem;
+    width: 100vw;
+    padding: 1.75rem;
+    @include adaptablePaginaTablet {
+      width: 30vw;
+      padding: 0.5rem;
+    }
     h1 {
       text-align: center;
       font-size: 2rem;
@@ -379,6 +420,123 @@ main {
           font-size: 1.25rem;
         }
       }
+    }
+  }
+}
+
+.cajaDeComentarios {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  h5 {
+    font-size: 1.25rem;
+    padding-top: 4rem;
+    @include adaptablePaginaTablet {
+      font-size: 2rem;
+    }
+  }
+  textarea {
+    border-radius: 4px;
+    background-color: rgba(81, 81, 82, 0.652);
+    color: white;
+    text-rendering: auto;
+    margin-top: 3rem;
+    width: 65vw;
+    height: 10vh;
+  }
+  button {
+    border-radius: 4px;
+
+    margin: 1rem;
+    padding: 0.25rem;
+    width: 25vw;
+    background-color: rgb(252, 227, 193);
+    @include adaptablePaginaTablet {
+      width: 8vw;
+    }
+  }
+  #comentariosHechos {
+    div {
+      width: 70vw;
+      border-radius: 4px;
+      background: rgba(207, 170, 155, 0.852);
+      padding: 1rem;
+      margin: 1rem;
+      p {
+        font-size: 1.25rem;
+        @include adaptablePaginaTablet {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+#programadorCompras {
+  label {
+    background-color: rgba(255, 230, 198, 0.879);
+    width: 20rem;
+    height: 11rem;
+    position: absolute;
+    top: 10rem;
+    left: 40vw;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    h5 {
+      padding: 1rem;
+      color: black;
+      width: 100%;
+    }
+    input {
+      width: 60%;
+      margin: 0rem 0.25rem 0rem 4rem;
+      height: 2rem;
+    }
+    span::after {
+      padding-left: 5px;
+    }
+
+    input:invalid + span::after {
+      content: "✖";
+    }
+
+    input:valid + span::after {
+      content: "✓";
+    }
+    button {
+      width: 30%;
+      margin: auto;
+    }
+  }
+}
+#formularioPago {
+  form {
+    position: absolute;
+    background-color: rgba(77, 76, 74, 0.879);
+    width: 35rem;
+    height: 13rem;
+    position: absolute;
+    top: 10rem;
+    left: 33vw;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    p {
+      font-size: 1.25rem;
+      width: 100%;
+    }
+    input {
+      width: 70%;
+      margin: 0.75rem auto;
+      padding: 0.125rem;
+    }
+    button {
+      width: 35%;
+      margin: auto;
     }
   }
 }
