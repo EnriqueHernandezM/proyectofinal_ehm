@@ -283,6 +283,7 @@ main {
   }
 }
 #acumuladorTotal {
+  padding: 1rem 3rem 1rem 2rem;
   @include adaptablePagina {
     padding: 1rem 10rem 1rem 17rem;
   }
@@ -307,7 +308,7 @@ main {
       }
     }
     button {
-      width: 3rem;
+      width: 4rem;
       height: 2rem;
       padding: 1px;
       margin: 1px;
@@ -477,22 +478,26 @@ main {
   label {
     background-color: rgba(255, 230, 198, 0.879);
     width: 20rem;
-    height: 11rem;
+    height: 13rem;
     position: absolute;
     top: 10rem;
-    left: 40vw;
+    left: 10vw;
     text-align: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    @include adaptablePaginaTablet {
+      top: 10rem;
+      left: 40vw;
+    }
     h5 {
-      padding: 1rem;
+      padding: 0.25rem;
       color: black;
       width: 100%;
     }
     input {
       width: 60%;
-      margin: 0rem 0.25rem 0rem 4rem;
+      margin: 0rem 0.25rem 0rem 1.75rem;
       height: 2rem;
     }
     span::after {
@@ -516,15 +521,20 @@ main {
   form {
     position: absolute;
     background-color: rgba(77, 76, 74, 0.879);
-    width: 35rem;
+    width: 24rem;
     height: 13rem;
     position: absolute;
     top: 10rem;
-    left: 33vw;
+    left: 2vw;
     text-align: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    @include adaptablePaginaTablet {
+      width: 35rem;
+      top: 10rem;
+      left: 33vw;
+    }
     p {
       font-size: 1.25rem;
       width: 100%;

@@ -249,11 +249,11 @@ body {
   width: 95vw;
   opacity: 100;
   -webkit-animation-name: desaparece;
-  animation-name: desaparece;
+          animation-name: desaparece;
   -webkit-animation-duration: 10s;
-  animation-duration: 10s;
+          animation-duration: 10s;
   -webkit-animation-delay: 1s;
-  animation-delay: 1s;
+          animation-delay: 1s;
   color: rgb(255, 219, 136);
   font-family: "Trebuchet MS";
   font-weight: 400;
@@ -317,11 +317,11 @@ body {
   background-size: contain;
   opacity: 0;
   -webkit-animation-name: desaparecer;
-  animation-name: desaparecer;
+          animation-name: desaparecer;
   -webkit-animation-duration: 7s;
-  animation-duration: 7s;
+          animation-duration: 7s;
   -webkit-animation-delay: 0.5s;
-  animation-delay: 0.5s;
+          animation-delay: 0.5s;
   font-size: 1.25rem;
   color: rgb(255, 219, 136);
   font-family: "Trebuchet MS";
@@ -407,6 +407,9 @@ main h3 {
   border-radius: 4px;
 }
 
+#acumuladorTotal {
+  padding: 1rem 3rem 1rem 2rem;
+}
 @media screen and (min-width: 992px) {
   #acumuladorTotal {
     padding: 1rem 10rem 1rem 17rem;
@@ -438,7 +441,7 @@ main h3 {
   }
 }
 #acumuladorTotal div button {
-  width: 3rem;
+  width: 4rem;
   height: 2rem;
   padding: 1px;
   margin: 1px;
@@ -617,23 +620,29 @@ main h3 {
 #programadorCompras label {
   background-color: rgba(255, 230, 198, 0.879);
   width: 20rem;
-  height: 11rem;
+  height: 13rem;
   position: absolute;
   top: 10rem;
-  left: 40vw;
+  left: 10vw;
   text-align: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+@media screen and (min-width: 576px) {
+  #programadorCompras label {
+    top: 10rem;
+    left: 40vw;
+  }
+}
 #programadorCompras label h5 {
-  padding: 1rem;
+  padding: 0.25rem;
   color: black;
   width: 100%;
 }
 #programadorCompras label input {
   width: 60%;
-  margin: 0rem 0.25rem 0rem 4rem;
+  margin: 0rem 0.25rem 0rem 1.75rem;
   height: 2rem;
 }
 #programadorCompras label span::after {
@@ -653,15 +662,22 @@ main h3 {
 #formularioPago form {
   position: absolute;
   background-color: rgba(77, 76, 74, 0.879);
-  width: 35rem;
+  width: 24rem;
   height: 13rem;
   position: absolute;
   top: 10rem;
-  left: 33vw;
+  left: 2vw;
   text-align: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+@media screen and (min-width: 576px) {
+  #formularioPago form {
+    width: 35rem;
+    top: 10rem;
+    left: 33vw;
+  }
 }
 #formularioPago form p {
   font-size: 1.25rem;
@@ -698,4 +714,4 @@ main h3 {
 }
 .pieDePaginas li a img {
   width: 3rem;
-} /*# sourceMappingURL=estilos.css.map */
+}/*# sourceMappingURL=estilos.css.map */

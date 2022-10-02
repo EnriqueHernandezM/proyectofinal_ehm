@@ -207,6 +207,7 @@ const mostrarItemsEnCarrito = () => {
         </div >
       `;
     document.getElementById("acumuladorTotal").innerHTML = acumulador;
+    localStorage.setItem("totalDeLaCompra", prueba);
   }
 };
 //funcion buscador por tipos de licor funciona con minusculas!!!
@@ -269,6 +270,7 @@ const pasarApagar = (valor) => {
       programadorComprasImp += `
       <label>
       <h5> ${dt}  </h5>
+      <h5> Puedes programas tu pedido para hasta 5 meses despues <h5>
       <input type="date" id="fechaProgramacion" name="trip-start" min="2022-01-01" max="2025-12-31" required >
       <span class="validity"> </span>
       <button type="button" onclick="procesadorFechaProgram('procesar')">Enviar</button>
@@ -333,7 +335,7 @@ function procesadorDePago() {
    <p> Pedido a nombre de ${nombreIgresadoParaUsar}</p>
    <input id="entradaApellido" type="text" placeholder="apellido" required />
    <input id="entradaCorreo" type="email" placeholder="correo electronico" pattern=".+@hotmail.com" size="30" required />
-   <button type="button" onclick="ticketCompra()">OK</button>
+   <button type="button" onclick="ticketCompra()">Confirmar</button>
   </form>
   `;
   document.getElementById("formularioPago").innerHTML = formularioParaPago;
@@ -347,16 +349,17 @@ const ticketCompra = () => {
   let regresoProgramacionCompra = localStorage.getItem("valorProcesadroFechaProgram");
   let entradaApellido = document.getElementById("entradaApellido").value;
   let entradaCorreo = document.getElementById("entradaCorreo").value;
+
   if (entradaCorreo == "") {
     procesadorDePago();
   } else {
-    document.getElementById("itemsEnElCarrito").remove();
     document.getElementById("acumuladorTotal").remove();
     localStorage.setItem("entradaApellido1", entradaApellido);
     localStorage.setItem("entradaCorreo1", entradaCorreo);
 
     let regEntradaApellido = localStorage.getItem("entradaApellido1");
     let regEntradaCorreo = localStorage.getItem("entradaCorreo1");
+    let regTotal = localStorage.getItem("totalDeLaCompra");
     let impTicketCompra = " ";
     impTicketCompra += `
   <div>
@@ -364,6 +367,7 @@ const ticketCompra = () => {
   <h4> Nombre: ${nombreIgresadoParaUsar + esp + regEntradaApellido} </h4>
   <h4> Correo Electronico:${regEntradaCorreo}</h4>
   <h4>Fecha en la que estara listo el pedido: ${regresoProgramacionCompra || "Tu compra estara lista para recoger en aprox.25min"} </h4>
+  <h4> Total a pagar:$${regTotal}</h4>
   <h4> Presenta este codigo para recoger tu entrega: ${random(1000, 1500)} </h4>
   </div>
   `;
